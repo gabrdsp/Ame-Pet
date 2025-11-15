@@ -52,7 +52,7 @@ public class Main {
         System.out.println("║  6. Listar Clientes                                   ║");
         System.out.println("║  7. Listar Funcionários                               ║");
         System.out.println("║  8. Listar Pets                                       ║");
-        System.out.println("║  9. Fármacia                                          ║");
+        System.out.println("║  9. Produtos                                          ║");
         System.out.println("║  0. Sair                                              ║");
         System.out.println("╚═══════════════════════════════════════════════════════╝");
         System.out.print("Escolha uma opção: ");
