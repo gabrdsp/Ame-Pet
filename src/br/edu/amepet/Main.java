@@ -2,8 +2,10 @@ package src.br.edu.amepet;
 
 import src.br.edu.amepet.gerenciador.GerenciadorPetShop;
 import src.br.edu.amepet.menu.MenuProduto;
-import src.br.edu.amepet.modelo.*;
-import src.br.edu.amepet.modelo.Pet;
+import src.br.edu.amepet.modelo.pessoa.Pessoa;
+import src.br.edu.amepet.modelo.pet.Pet;
+import src.br.edu.amepet.modelo.pessoa.Cliente;
+import src.br.edu.amepet.modelo.pessoa.Funcionario;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package src.br.edu.amepet.modelo;
+package src.br.edu.amepet.modelo.pessoa;
 
 //Classe Funcionario - Subclasse de Pessoa.
 // Demonstra HERANÇA e POLIMORFISMO.

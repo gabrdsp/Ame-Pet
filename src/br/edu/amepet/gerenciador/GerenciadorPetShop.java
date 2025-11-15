@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import src.br.edu.amepet.modelo.Cliente;
 import src.br.edu.amepet.modelo.produto.Produto;
-import src.br.edu.amepet.modelo.Funcionario;
-import src.br.edu.amepet.modelo.Pessoa;
-import src.br.edu.amepet.modelo.Pet;
+import src.br.edu.amepet.modelo.pessoa.Pessoa;
+import src.br.edu.amepet.modelo.pet.Pet;
+import src.br.edu.amepet.modelo.pessoa.Cliente;
+import src.br.edu.amepet.modelo.pessoa.Funcionario;
 
 public class GerenciadorPetShop {
     // POLIMORFISMO: Lista da superclasse abstrata (requisito 4.2)

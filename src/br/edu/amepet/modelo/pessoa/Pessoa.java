@@ -1,4 +1,4 @@
-package src.br.edu.amepet.modelo;
+package src.br.edu.amepet.modelo.pessoa;
 
 public abstract class Pessoa {
     

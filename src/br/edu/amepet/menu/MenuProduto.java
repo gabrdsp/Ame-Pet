@@ -3,8 +3,8 @@ package src.br.edu.amepet.menu;
 import java.util.Scanner;
 
 import src.br.edu.amepet.gerenciador.GerenciadorPetShop;
+import src.br.edu.amepet.modelo.pessoa.Cliente;
 import src.br.edu.amepet.modelo.produto.Produto;
-import src.br.edu.amepet.modelo.Cliente;
 
 public class MenuProduto {
     private GerenciadorPetShop gerenciador;

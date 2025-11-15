@@ -1,7 +1,9 @@
-package src.br.edu.amepet.modelo;
+package src.br.edu.amepet.modelo.pessoa;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import src.br.edu.amepet.modelo.pet.Pet;
 
 // Classe Cliente - Subclasse de Pessoa.
 // Demonstra HERANÇA e POLIMORFISMO.
