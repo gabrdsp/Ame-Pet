@@ -1,5 +1,7 @@
 package src.br.edu.amepet;
+
 import src.br.edu.amepet.gerenciador.GerenciadorPetShop;
+import src.br.edu.amepet.menu.MenuProduto;
 import src.br.edu.amepet.modelo.*;
 import src.br.edu.amepet.modelo.Pet;
 
@@ -50,6 +52,7 @@ public class Main {
         System.out.println("║  6. Listar Clientes                                   ║");
         System.out.println("║  7. Listar Funcionários                               ║");
         System.out.println("║  8. Listar Pets                                       ║");
+        System.out.println("║  9. Fármacia                                          ║");
         System.out.println("║  0. Sair                                              ║");
         System.out.println("╚═══════════════════════════════════════════════════════╝");
         System.out.print("Escolha uma opção: ");
@@ -89,6 +92,10 @@ public class Main {
                     break;
                 case 8:
                     gerenciador.listarPets();
+                    break;
+                case 9:
+                    MenuProduto menuProduto = new MenuProduto(gerenciador, scanner);
+                    menuProduto.exibirMenu();
                     break;
                 case 0:
                     return false;
