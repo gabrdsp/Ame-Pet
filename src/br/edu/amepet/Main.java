@@ -1,11 +1,11 @@
 package src.br.edu.amepet;
 
 import src.br.edu.amepet.gerenciador.GerenciadorPetShop;
-import src.br.edu.amepet.menu.MenuProduto;
 import src.br.edu.amepet.modelo.pessoa.Pessoa;
 import src.br.edu.amepet.modelo.pet.Pet;
 import src.br.edu.amepet.modelo.pessoa.Cliente;
 import src.br.edu.amepet.modelo.pessoa.Funcionario;
+import src.br.edu.amepet.modelo.produto.Produto.MenuProduto;
 
 import java.util.Scanner;
 
@@ -54,7 +54,7 @@ public class Main {
         System.out.println("║  6. Listar Clientes                                   ║");
         System.out.println("║  7. Listar Funcionários                               ║");
         System.out.println("║  8. Listar Pets                                       ║");
-        System.out.println("║  9. Produtos                                          ║");
+        System.out.println("║  9. Comprar Produtos                                  ║");
         System.out.println("║  0. Sair                                              ║");
         System.out.println("╚═══════════════════════════════════════════════════════╝");
         System.out.print("Escolha uma opção: ");
@@ -96,8 +96,7 @@ public class Main {
                     gerenciador.listarPets();
                     break;
                 case 9:
-                    MenuProduto menuProduto = new MenuProduto(gerenciador, scanner);
-                    menuProduto.exibirMenu();
+                    new MenuProduto(gerenciador, scanner).exibirMenu();
                     break;
                 case 0:
                     return false;
@@ -221,6 +220,31 @@ public class Main {
         } else {
             System.out.println("\n Pessoa não encontrada!");
         }
+    }
+
+    // Permite ao cliente comprar produtos.
+    private static void comprarProdutos() {
+        System.out.println("\n>>> LOJA - COMPRAR PRODUTOS <<<");
+        
+        System.out.print("CPF do cliente: ");
+        String cpf = scanner.nextLine();
+        
+        Cliente cliente = gerenciador.buscarClientePorCpf(cpf);
+        if (cliente == null) {
+            System.out.println("\nCliente não encontrado!");
+            return;
+        }
+        
+        System.out.println("\nSaldo disponível: R$ " + cliente.getSaldoCredito());
+        gerenciador.listarProdutos();
+        
+        System.out.print("\nCódigo do produto: ");
+        String codigo = scanner.nextLine();
+        
+        System.out.print("Quantidade: ");
+        int quantidade = Integer.parseInt(scanner.nextLine());
+        
+        gerenciador.venderProduto(cpf, codigo, quantidade);
     }
     
     private static void pausar() {

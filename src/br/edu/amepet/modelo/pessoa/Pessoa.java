@@ -1,5 +1,4 @@
 package src.br.edu.amepet.modelo.pessoa;
-
 public abstract class Pessoa {
     
     // ENCAPSULAMENTO: Atributos privados
@@ -49,7 +48,6 @@ public abstract class Pessoa {
     public abstract String exibirDetalhes();
     
     public String getInfoBasica() {
-        return String.format("Nome: %s | CPF: %s | Tel: %s ", 
-                           nome, cpf, telefone);
+        return String.format("Nome: %s | CPF: %s | Tel: %s ", nome, cpf, telefone);
     }
 }
