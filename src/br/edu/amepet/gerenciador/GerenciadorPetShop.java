@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import src.br.edu.amepet.modelo.atendimento.Atendimento;
 import src.br.edu.amepet.modelo.pessoa.*;
 import src.br.edu.amepet.modelo.pet.*;
 import src.br.edu.amepet.modelo.produto.*;
@@ -11,9 +12,9 @@ import src.br.edu.amepet.modelo.produto.*;
 public class GerenciadorPetShop {
     // POLIMORFISMO: Lista da superclasse abstrata (requisito 4.2)
     private List<Pessoa> pessoas;
-
     private List<Pet> pets;
     private List<Produto> produtos;
+    private List<Atendimento> atendimentos;
 
     // COntrutor do Gerenciador
     // Inicializa todas as coleções e adiciona dados de exemplo
@@ -21,7 +22,7 @@ public class GerenciadorPetShop {
         this.pessoas = new ArrayList<>();
         this.pets = new ArrayList<>();
         this.produtos = new ArrayList<>();
-
+        this.atendimentos = new ArrayList<>();
         // Inicializa com dados de exemplo
         inicializarDadosExemplo();
     }
@@ -332,5 +333,9 @@ public class GerenciadorPetShop {
 
     public List<Produto> getProdutos() {
         return new ArrayList<>(produtos);
+    }
+
+    public List<Atendimento> getAtendimentos() {
+        return new ArrayList<>(atendimentos);
     }
 }
