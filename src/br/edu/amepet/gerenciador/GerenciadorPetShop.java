@@ -75,13 +75,16 @@ public class GerenciadorPetShop {
             //Pets de exemplo
             Pet pet1 = new Pet("Zoe", "Cachorro", "Poodle", 7, 13.0, "123.456.789-00");
             Pet pet2 = new Pet("Kira", "Gato", "Siamês", 3, 4.2, "123.456.789-00");
+            Pet pet3 = new Pet("Luna","Cachorro","Poodle",7,11,"555.666.777-88");
 
             pets.add(pet1);
             pets.add(pet2);
+            pets.add(pet3);
 
             //Adiciona pets aos clientes
             c1.adicionaPet(pet1);
             c1.adicionaPet(pet2);
+            c2.adicionaPet(pet3);
 
             //Produtoa de exemplo
             produtos.add(new Produto("PRD001", "Ração Premium Cães", "Ração", 120.0, 50));
