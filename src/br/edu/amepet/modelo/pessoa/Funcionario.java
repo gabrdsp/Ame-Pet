@@ -12,8 +12,7 @@ public class Funcionario extends Pessoa {
     private int servicosRealizados;
     
     // Construtor completo do Funcionário.
-    public Funcionario(String nome, String cpf, String telefone, 
-                      String cargo, double salario, String dataAdmissao) {
+    public Funcionario(String nome, String cpf, String telefone, String cargo, double salario, String dataAdmissao) {
         super(nome, cpf, telefone);
         this.setCargo(cargo);
         this.setSalario(salario);
