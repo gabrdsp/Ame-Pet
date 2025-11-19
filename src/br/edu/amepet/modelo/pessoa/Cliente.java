@@ -1,9 +1,8 @@
-package src.br.edu.amepet.modelo.pessoa;
+package br.edu.amepet.modelo.pessoa;
 
+import br.edu.amepet.modelo.pet.Pet;
 import java.util.ArrayList;
 import java.util.List;
-
-import src.br.edu.amepet.modelo.pet.Pet;
 
 // Classe Cliente - Subclasse de Pessoa.
 // Demonstra HERANÇA e POLIMORFISMO.
@@ -16,14 +15,18 @@ public class Cliente extends Pessoa {
     private double saldoCredito;
     private List<Pet> pets;
     private int totalServicosContratados;
+    private String usuario;
+    private String senha;
     
     // Construtor completo do Cliente.
-    public Cliente(String nome, String cpf, String telefone, String endereco) {
+    public Cliente(String nome, String cpf, String telefone, String endereco, String usuario, String senha) {
         super(nome, cpf, telefone); // Chama construtor da superclasse
         this.setEndereco(endereco);
         this.saldoCredito = 0;
         this.pets = new ArrayList<>();
         this.totalServicosContratados = 0;
+        this.usuario = usuario;
+        this.senha = senha;
     }
     
     public String getEndereco() {
@@ -47,6 +50,10 @@ public class Cliente extends Pessoa {
         }
         this.saldoCredito = saldoCredito;
     }
+
+    public String getUsuario() { return usuario; }
+
+    public String getSenha() { return senha; }
 
     public List<Pet> getPets() {
         return new ArrayList<>(pets); // Retorna cópia para proteger encapsulamento

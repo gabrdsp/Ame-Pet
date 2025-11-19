@@ -1,49 +1,63 @@
-package src.br.edu.amepet.modelo.atendimento;
-import src.br.edu.amepet.modelo.pessoa.Cliente;
-import src.br.edu.amepet.modelo.pessoa.Funcionario;
-import src.br.edu.amepet.modelo.pet.Pet;
+package br.edu.amepet.modelo.atendimento;
 
+import br.edu.amepet.modelo.pessoa.Cliente;
+import br.edu.amepet.modelo.pet.Pet;
 
-public abstract class  Atendimento {
-   private String codigoAtendimento;
-   private String nome;
-   private double precoAtendimento;
-   private String cpfCliente;
-   private String nomePet;
-   private String data;
+/**
+ * Classe abstrata Atendimento que referencia Cliente e Pet.
+ * Subclasses representam tipos concretos: Consulta, Exame, Cirurgia.
+ */
+public abstract class Atendimento {
+    private String codigo;
+    private String nome; // ex: "Consulta", "Exame", "Cirurgia"
+    private double preco;
+    private Cliente cliente;
+    private Pet pet;
+    private String data; // dd/mm/aaaa
 
-    public Atendimento(String codigo, String nome, double preco, String cpfCliente, String nomePet, String data) {
-        this.codigoAtendimento = codigo;
+    public Atendimento(String codigo, String nome, double preco, Cliente cliente, Pet pet, String data) {
+        this.codigo = codigo;
         this.nome = nome;
-        this.precoAtendimento = preco;
-        this.cpfCliente = cpfCliente;
-        this.nomePet = nomePet;
+        this.preco = preco;
+        this.cliente = cliente;
+        this.pet = pet;
         this.data = data;
     }
 
-    public String getCodigoAtendimento() {
-        return codigoAtendimento;
+    public String getCodigo() {
+        return codigo;
     }
 
     public String getNome() {
         return nome;
     }
 
-    public double getPrecoAtendimento() {
-        return precoAtendimento;
+    public double getPreco() {
+        return preco;
     }
 
-    public String getCpfCliente() {
-        return cpfCliente;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public String getNomePet() {
-        return nomePet;
+    public Pet getPet() {
+        return pet;
     }
 
     public String getData() {
         return data;
     }
 
-    public abstract void exibirInfoAtendimento();
+    /**
+     * Deve retornar uma string com as informações do atendimento.
+     * Usado pelo gerenciador para exibição/listagem.
+     */
+    public abstract String exibirInformacoes();
+
+    /**
+     * Método de conveniência que imprime as informações no console.
+     */
+    public void imprimir() {
+        System.out.println(exibirInformacoes());
+    }
 }

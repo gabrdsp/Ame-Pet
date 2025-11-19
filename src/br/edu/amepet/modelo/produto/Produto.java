@@ -1,12 +1,11 @@
-package src.br.edu.amepet.modelo.produto;
+package br.edu.amepet.modelo.produto;
 
-import java.util.List;
-import java.util.Scanner;
+import br.edu.amepet.gerenciador.GerenciadorPetShop;
+import br.edu.amepet.modelo.pessoa.Cliente;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-
-import src.br.edu.amepet.gerenciador.GerenciadorPetShop;
-import src.br.edu.amepet.modelo.pessoa.Cliente;
+import java.util.List;
+import java.util.Scanner;
 
 public class Produto {
     private String codigo;

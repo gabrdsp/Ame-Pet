@@ -1,4 +1,4 @@
-package src.br.edu.amepet.modelo.pessoa;
+package br.edu.amepet.modelo.pessoa;
 
 //Classe Funcionario - Subclasse de Pessoa.
 // Demonstra HERANÇA e POLIMORFISMO.
@@ -10,16 +10,26 @@ public class Funcionario extends Pessoa {
     private double salario;
     private String dataAdmissao;
     private int servicosRealizados;
+    private String usuarioFuncionario;
+    private String senhaFuncionario;
     
     // Construtor completo do Funcionário.
-    public Funcionario(String nome, String cpf, String telefone, String cargo, double salario, String dataAdmissao) {
+    public Funcionario(String nome, String cpf, String telefone, String cargo, double salario, String dataAdmissao, String usuarioFuncionario, String senhaFuncionario) {
         super(nome, cpf, telefone);
         this.setCargo(cargo);
         this.setSalario(salario);
         this.setDataAdmissao(dataAdmissao);
         this.servicosRealizados = 0;
+        this.usuarioFuncionario = usuarioFuncionario;
+        this.senhaFuncionario = senhaFuncionario;
     }
     
+    public String getUsuarioFuncionario()
+    { return usuarioFuncionario; }
+
+    public String getSenhaFuncionario()
+    { return senhaFuncionario; }
+
     public String getCargo() {
         return cargo;
     }

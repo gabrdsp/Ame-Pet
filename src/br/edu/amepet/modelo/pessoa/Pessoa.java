@@ -1,4 +1,4 @@
-package src.br.edu.amepet.modelo.pessoa;
+package br.edu.amepet.modelo.pessoa;
 public abstract class Pessoa {
     
     // ENCAPSULAMENTO: Atributos privados

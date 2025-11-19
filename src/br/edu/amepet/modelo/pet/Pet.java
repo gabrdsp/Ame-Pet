@@ -1,4 +1,4 @@
-package src.br.edu.amepet.modelo.pet;
+package br.edu.amepet.modelo.pet;
 
 public class Pet {
 

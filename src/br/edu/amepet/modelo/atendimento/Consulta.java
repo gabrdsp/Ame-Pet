@@ -1,18 +1,30 @@
-package src.br.edu.amepet.modelo.atendimento;
+package br.edu.amepet.modelo.atendimento;
 
-public class Consulta extends Atendimento{
+import br.edu.amepet.modelo.pessoa.Cliente;
+import br.edu.amepet.modelo.pet.Pet;
+
+public class Consulta extends Atendimento {
     private String veterinario;
-    public Consulta (String codigo, String nome, double preco, String cpfCliente, String nomePet, String data,String veterinario){
-        super(codigo,"Consulta", preco, cpfCliente, nomePet, data);
+
+    public Consulta(String codigo, double preco, Cliente cliente, Pet pet, String data, String veterinario) {
+        super(codigo, "Consulta", preco, cliente, pet, data);
         this.veterinario = veterinario;
     }
 
+    public String getVeterinario() {
+        return veterinario;
+    }
+
     @Override
-    public void exibirInfoAtendimento() {
-        System.out.println("Tipo de atendimento: Consulta.");
-        System.out.println("Pet: " + getNomePet());
-        System.out.println("Veterinário: " + veterinario);
-        System.out.println("Data: " + getData());
-        System.out.println("Preço: " + getPrecoAtendimento() );
+    public String exibirInformacoes() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("=== Consulta ===\n");
+        sb.append("Código: ").append(getCodigo()).append("\n");
+        sb.append("Cliente: ").append(getCliente().getNome()).append(" (").append(getCliente().getCpf()).append(")\n");
+        sb.append("Pet: ").append(getPet().getNome()).append("\n");
+        sb.append("Veterinário: ").append(veterinario).append("\n");
+        sb.append("Data: ").append(getData()).append("\n");
+        sb.append("Preço: R$ ").append(getPreco()).append("\n");
+        return sb.toString();
     }
 }

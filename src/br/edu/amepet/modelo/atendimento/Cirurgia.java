@@ -1,23 +1,37 @@
-package src.br.edu.amepet.modelo.atendimento;
+package br.edu.amepet.modelo.atendimento;
 
-public class Cirurgia extends Atendimento{
+import br.edu.amepet.modelo.pessoa.Cliente;
+import br.edu.amepet.modelo.pet.Pet;
 
+public class Cirurgia extends Atendimento {
     private String procedimento;
     private int duracaoHoras;
 
-    public Cirurgia(String codigo, String nome, double preco, String cpfCliente, String nomePet, String data, String procedimento, int duracaoHoras) {
-        super(codigo, nome, preco, cpfCliente, nomePet, data);
+    public Cirurgia(String codigo, double preco, Cliente cliente, Pet pet, String data, String procedimento, int duracaoHoras) {
+        super(codigo, "Cirurgia", preco, cliente, pet, data);
         this.procedimento = procedimento;
         this.duracaoHoras = duracaoHoras;
     }
 
+    public String getProcedimento() {
+        return procedimento;
+    }
+
+    public int getDuracaoHoras() {
+        return duracaoHoras;
+    }
+
     @Override
-    public void exibirInfoAtendimento() {
-        System.out.println("Tipo de atendimento: Cirugia.");
-        System.out.println("Procedimento: " + procedimento);
-        System.out.println("Duração: " + duracaoHoras);
-        System.out.println("Pet: " + getNomePet());
-        System.out.println("Data: " + getData());
-        System.out.println("Preço: " + getPrecoAtendimento() );
+    public String exibirInformacoes() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("=== Cirurgia ===\n");
+        sb.append("Código: ").append(getCodigo()).append("\n");
+        sb.append("Cliente: ").append(getCliente().getNome()).append(" (").append(getCliente().getCpf()).append(")\n");
+        sb.append("Pet: ").append(getPet().getNome()).append("\n");
+        sb.append("Procedimento: ").append(procedimento).append("\n");
+        sb.append("Duração (h): ").append(duracaoHoras).append("\n");
+        sb.append("Data: ").append(getData()).append("\n");
+        sb.append("Preço: R$ ").append(getPreco()).append("\n");
+        return sb.toString();
     }
 }
