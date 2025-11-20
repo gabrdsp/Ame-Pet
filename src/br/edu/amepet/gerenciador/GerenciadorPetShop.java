@@ -5,6 +5,8 @@ import br.edu.amepet.modelo.pessoa.Cliente;
 import br.edu.amepet.modelo.pessoa.Funcionario;
 import br.edu.amepet.modelo.pessoa.Pessoa;
 import br.edu.amepet.modelo.pet.Pet;
+import br.edu.amepet.modelo.pet.PetAdocao;
+import br.edu.amepet.modelo.pet.PetsVenda;
 import br.edu.amepet.modelo.produto.Produto;
 
 import java.util.ArrayList;
@@ -16,7 +18,9 @@ public class GerenciadorPetShop {
     private List<Pet> pets = new ArrayList<>();
     private List<Produto> produtos = new ArrayList<>();
     private List<Atendimento> atendimentos = new ArrayList<>();
-
+    private List<PetsVenda> petsVenda = new ArrayList<>();
+    private List<PetAdocao> petsAdoção = new ArrayList<>();
+    
     // ============================================================
     //                   CADASTROS BÁSICOS
     // ============================================================
@@ -330,4 +334,70 @@ public class GerenciadorPetShop {
     public void emitirRecibo() {
         System.out.println("---- Recibo emitido ----");
     }
+
+    // ============================================================
+    //                      COMPRA E ADOÇÕES
+    // ============================================================
+    
+    
+    public void cadastrarPetVenda(PetsVenda pv) {
+        petsVenda.add(pv);
+        System.out.println("Pet para compra cadastrado com sucesso!");
+    }
+
+    public void listarpetsvenda(){
+        if (petsVenda.isEmpty()) {
+            System.out.println("Nenhum pet disponível para venda no momento.");
+            return;
+        }
+
+        System.out.println("Pets disponíveis para compra");
+        for(int i = 0; i < petsVenda.size(); i++) {
+            PetsVenda pet = petsVenda.get(i);
+            System.out.println((i + 1) + ". " + petsVenda.get(i).detalhes());
+        }
+    }
+
+    public void comprarPet(String nome){
+        for (int i = 0; i < petsVenda.size(); i++) {
+        PetsVenda pet = petsVenda.get(i);
+        if (pet.getNome().equalsIgnoreCase(nome)) {
+            petsVenda.remove(i);
+            System.out.println("Você comprou o pet com sucesso!");
+            System.out.println(pet.detalhes());
+            return;
+        }
+    }
+    }
+
+    public void cadastrarPetParaAdoção(PetAdocao pa) {
+        petsAdoção.add(pa);
+        System.out.println("Pet para adoção cadastrado com sucesso!");
+}
+
+    public void listarPetsadocao(){
+        if (petsAdoção.isEmpty()) {
+            System.out.println("Nenhum pet disponível para adoção no momento.");
+            return;
+        }
+
+        System.out.println("Pets disponíveis para adoção");
+        for(int i = 0; i < petsAdoção.size(); i++) {
+            PetAdocao pet = petsAdoção.get(i);
+            System.out.println((i + 1) + ". " + petsAdoção.get(i).detalhes());
+        }
+    }
+
+    public void adotarPet(String nome){
+        for (int i = 0; i < petsAdoção.size(); i++) {
+        PetAdocao pet = petsAdoção.get(i);
+        if (pet.getNome().equalsIgnoreCase(nome)) {
+            petsAdoção.remove(i);
+            System.out.println("Você adotou o pet com sucesso!");
+            System.out.println(pet.detalhes());
+            return;
+        }
+    }
+
+}
 }

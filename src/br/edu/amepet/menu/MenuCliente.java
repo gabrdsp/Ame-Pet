@@ -3,7 +3,6 @@ package br.edu.amepet.menu;
 import br.edu.amepet.gerenciador.GerenciadorPetShop;
 import br.edu.amepet.modelo.pessoa.Cliente;
 import br.edu.amepet.modelo.pet.Pet;
-
 import java.util.Scanner;
 
 public class MenuCliente {
@@ -18,6 +17,7 @@ public class MenuCliente {
             System.out.println("║ 2. Cadastro de Pet                             ║");
             System.out.println("║ 3. Serviços do Petshop                         ║");
             System.out.println("║ 4. Histórico do Pet                            ║");
+            System.out.println("║ 5. Comprar ou adotar Pets                      ║");
             System.out.println("║ 0. Voltar                                      ║");
             System.out.println("╚════════════════════════════════════════════════╝");
             System.out.print("Escolha uma opção: ");
@@ -29,6 +29,7 @@ public class MenuCliente {
                 case 2 -> menuCadastroPet(sistema, sc);
                 case 3 -> MenuServicos.exibir(sistema, sc);
                 case 4 -> MenuHistorico.exibir(sistema, sc);
+                case 5 -> MenuCompraAdocao.exibir(sistema, sc);
                 case 0 -> System.out.println("Voltando ao menu anterior...");
                 default -> System.out.println("Opção inválida! Tente novamente.");
             }
