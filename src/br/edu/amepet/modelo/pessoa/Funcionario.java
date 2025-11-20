@@ -19,7 +19,6 @@ public class Funcionario extends Pessoa {
         this.setCargo(cargo);
         this.setSalario(salario);
         this.setDataAdmissao(dataAdmissao);
-        this.servicosRealizados = 0;
         this.usuarioFuncionario = usuarioFuncionario;
         this.senhaFuncionario = senhaFuncionario;
     }
@@ -86,5 +85,10 @@ public class Funcionario extends Pessoa {
         sb.append(String.format("║ Serviços Realizados: %d\n", servicosRealizados));
         sb.append("╚════════════════════════════════════════════════╝\n");
         return sb.toString();
+    }
+
+    @Override
+    public String getTipoPessoa() {
+        return "Funcionário";
     }
 }

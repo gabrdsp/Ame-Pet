@@ -11,6 +11,8 @@ public abstract class Pessoa {
         this.setCpf(cpf);
         this.setTelefone(telefone);
     }
+
+    public abstract String getTipoPessoa();
     
     public String getNome() {
         return nome;
