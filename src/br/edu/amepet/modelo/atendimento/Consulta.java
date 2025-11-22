@@ -17,14 +17,6 @@ public class Consulta extends Atendimento {
 
     @Override
     public String exibirInformacoes() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("=== Consulta ===\n");
-        sb.append("Código: ").append(getCodigo()).append("\n");
-        sb.append("Cliente: ").append(getCliente().getNome()).append(" (").append(getCliente().getCpf()).append(")\n");
-        sb.append("Pet: ").append(getPet().getNome()).append("\n");
-        sb.append("Veterinário: ").append(veterinario).append("\n");
-        sb.append("Data: ").append(getData()).append("\n");
-        sb.append("Preço: R$ ").append(getPreco()).append("\n");
-        return sb.toString();
+        return "=== Consulta ===\n" + informacoesBase() + "Veterinário: " + veterinario + "\n";
     }
 }

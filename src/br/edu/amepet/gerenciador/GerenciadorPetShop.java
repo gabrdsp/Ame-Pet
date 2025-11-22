@@ -203,39 +203,31 @@ public class GerenciadorPetShop {
         registrarAtendimento(new Tosa(c, p));
     }
 
-    public void registrarExame(String cpf, String nomePet) {
-        Cliente c = buscarClientePorCpf(cpf);
-        Pet p = buscarPetPorNome(nomePet);
-
-        registrarAtendimento(new Exame(c, p));
+    public void registrarExame(String codigo, double preco, Cliente cliente, Pet pet, String data, String tipoExame) {
+       Exame exame = new Exame(codigo,preco, cliente, pet, data,tipoExame);
     }
 
-    public void registrarConsulta(String cpf, String nomePet) {
-        Cliente c = buscarClientePorCpf(cpf);
-        Pet p = buscarPetPorNome(nomePet);
-
-        registrarAtendimento(new Consulta(c, p));
+    public void registrarConsulta(String codigo, double preco, Cliente cliente, Pet pet, String data, String veterinario) {
+              Consulta consulta = new Consulta(codigo, preco, cliente, pet, data, veterinario);
+              registrarAtendimento(consulta);
     }
 
-    public void registrarVacina(String cpf, String nomePet) {
-        Cliente c = buscarClientePorCpf(cpf);
-        Pet p = buscarPetPorNome(nomePet);
-
-        registrarAtendimento(new Vacina(c, p));
+    public void registrarVacina(String codigo, double preco, Cliente cliente, Pet pet, String data, String tipoVacina) {
+          Vacina vacina = new Vacina(codigo, preco, cliente, pet, data, tipoVacina);
+          registrarAtendimento(vacina);
     }
 
-    public void registrarCirurgia(String cpf, String nomePet) {
-        Cliente c = buscarClientePorCpf(cpf);
-        Pet p = buscarPetPorNome(nomePet);
+    public void registrarCirurgia(String codigo, double preco, Cliente cliente, Pet pet, String data, String procedimento, int duracaoHoras) {
 
-        registrarAtendimento(new Cirurgia(c, p));
+        Cirurgia cirurgia = new Cirurgia(codigo, preco, cliente, pet, data, procedimento, duracaoHoras
+        );
+        registrarAtendimento(cirurgia);
     }
 
-    public void registrarInternacao(String cpf, String nomePet) {
-        Cliente c = buscarClientePorCpf(cpf);
-        Pet p = buscarPetPorNome(nomePet);
 
-        registrarAtendimento(new Internacao(c, p));
+    public void registrarInternacao(String codigo, double preco, Cliente cliente, Pet pet, String data, String motivo, int diasInternado) {
+       Internacao internacao = new Internacao(codigo,preco,cliente,pet,data,motivo,diasInternado);
+       registrarAtendimento(internacao);
     }
 
     // ============================================================
@@ -243,25 +235,17 @@ public class GerenciadorPetShop {
     // ============================================================
 
     public void mostrarHistoricoServicos(String cpf, String nomePet) {
-        for (Atendimento a : atendimentos) {
-            if (a.getCliente().getCpf().equals(cpf)
-                    && a.getPet().getNome().equalsIgnoreCase(nomePet)) {
-                System.out.println(a.exibirInformacoes());
-            }
-        }
+
     }
 
     public void mostrarHistoricoMedico(String cpf, String nomePet) {
         for (Atendimento a : atendimentos) {
-            if (a instanceof AtendimentoMedico) {
                 if (a.getCliente().getCpf().equals(cpf)
                         && a.getPet().getNome().equalsIgnoreCase(nomePet)) {
                     System.out.println(a.exibirInformacoes());
                 }
-            }
         }
     }
-
     // ============================================================
     //                      RELATÓRIOS
     // ============================================================

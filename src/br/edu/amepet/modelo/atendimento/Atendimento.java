@@ -52,6 +52,14 @@ public abstract class Atendimento {
      * Deve retornar uma string com as informações do atendimento.
      * Usado pelo gerenciador para exibição/listagem.
      */
+    protected String informacoesBase() {
+        return "Código: " + getCodigo() + "\n" +
+                "Cliente: " + getCliente().getNome() + " (" + getCliente().getCpf() + ")\n" +
+                "Pet: " + getPet().getNome() + "\n" +
+                "Data: " + getData() + "\n" +
+                "Preço: R$ " + getPreco() + "\n";
+    }
+
     public abstract String exibirInformacoes();
 
     /**
