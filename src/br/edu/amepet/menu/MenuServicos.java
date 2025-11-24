@@ -51,11 +51,13 @@ public class MenuServicos {
 
         System.out.println("---- Registro de Banho ----");
 
-        System.out.print("CPF do dono do pet: ");
-        String cpf = sc.nextLine();
+        System.out.print("CPF do dono do pet (ou '!sair' para voltar): ");
+        String cpf = CancelarAcao.readLineAllowExit(sc);
+        if (cpf == null) { System.out.println("Operação cancelada."); return; }
 
-        System.out.print("Nome do pet: ");
-        String nomePet = sc.nextLine();
+        System.out.print("Nome do pet (ou '!sair' para voltar): ");
+        String nomePet = CancelarAcao.readLineAllowExit(sc);
+        if (nomePet == null) { System.out.println("Operação cancelada."); return; }
 
         sistema.registrarBanho(cpf, nomePet);
 
@@ -69,11 +71,13 @@ public class MenuServicos {
 
         System.out.println("---- Registro de Tosa ----");
 
-        System.out.print("CPF do dono do pet: ");
-        String cpf = sc.nextLine();
+        System.out.print("CPF do dono do pet (ou '!sair' para voltar): ");
+        String cpf = CancelarAcao.readLineAllowExit(sc);
+        if (cpf == null) { System.out.println("Operação cancelada."); return; }
 
-        System.out.print("Nome do pet: ");
-        String nomePet = sc.nextLine();
+        System.out.print("Nome do pet (ou '!sair' para voltar): ");
+        String nomePet = CancelarAcao.readLineAllowExit(sc);
+        if (nomePet == null) { System.out.println("Operação cancelada."); return; }
 
         sistema.registrarTosa(cpf, nomePet);
 
@@ -87,11 +91,13 @@ public class MenuServicos {
 
         System.out.println("---- Registro de Exame ----");
 
-        System.out.print("CPF do dono do pet: ");
-        String cpf = sc.nextLine();
+        System.out.print("CPF do dono do pet (ou '!sair' para voltar): ");
+        String cpf = CancelarAcao.readLineAllowExit(sc);
+        if (cpf == null) { System.out.println("Operação cancelada."); return; }
 
-        System.out.print("Nome do pet: ");
-        String nomePet = sc.nextLine();
+        System.out.print("Nome do pet (ou '!sair' para voltar): ");
+        String nomePet = CancelarAcao.readLineAllowExit(sc);
+        if (nomePet == null) { System.out.println("Operação cancelada."); return; }
 
         sistema.registrarExame(cpf, nomePet);
 
@@ -105,11 +111,13 @@ public class MenuServicos {
 
         System.out.println("---- Registro de Consulta ----");
 
-        System.out.print("CPF do dono do pet: ");
-        String cpf = sc.nextLine();
+        System.out.print("CPF do dono do pet (ou '!sair' para voltar): ");
+        String cpf = CancelarAcao.readLineAllowExit(sc);
+        if (cpf == null) { System.out.println("Operação cancelada."); return; }
 
-        System.out.print("Nome do pet: ");
-        String nomePet = sc.nextLine();
+        System.out.print("Nome do pet (ou '!sair' para voltar): ");
+        String nomePet = CancelarAcao.readLineAllowExit(sc);
+        if (nomePet == null) { System.out.println("Operação cancelada."); return; }
 
         sistema.registrarConsulta(cpf, nomePet);
 
@@ -123,11 +131,13 @@ public class MenuServicos {
 
         System.out.println("---- Registro de Vacina ----");
 
-        System.out.print("CPF do dono do pet: ");
-        String cpf = sc.nextLine();
+        System.out.print("CPF do dono do pet (ou '!sair' para voltar): ");
+        String cpf = CancelarAcao.readLineAllowExit(sc);
+        if (cpf == null) { System.out.println("Operação cancelada."); return; }
 
-        System.out.print("Nome do pet: ");
-        String nomePet = sc.nextLine();
+        System.out.print("Nome do pet (ou '!sair' para voltar): ");
+        String nomePet = CancelarAcao.readLineAllowExit(sc);
+        if (nomePet == null) { System.out.println("Operação cancelada."); return; }
 
         sistema.registrarVacina(cpf, nomePet);
 
@@ -141,11 +151,13 @@ public class MenuServicos {
 
         System.out.println("---- Registro de Cirurgia ----");
 
-        System.out.print("CPF do dono do pet: ");
-        String cpf = sc.nextLine();
+        System.out.print("CPF do dono do pet (ou '!sair' para voltar): ");
+        String cpf = CancelarAcao.readLineAllowExit(sc);
+        if (cpf == null) { System.out.println("Operação cancelada."); return; }
 
-        System.out.print("Nome do pet: ");
-        String nomePet = sc.nextLine();
+        System.out.print("Nome do pet (ou '!sair' para voltar): ");
+        String nomePet = CancelarAcao.readLineAllowExit(sc);
+        if (nomePet == null) { System.out.println("Operação cancelada."); return; }
 
         sistema.registrarCirurgia(cpf, nomePet);
 
@@ -159,11 +171,13 @@ public class MenuServicos {
 
         System.out.println("---- Registro de Internação ----");
 
-        System.out.print("CPF do dono do pet: ");
-        String cpf = sc.nextLine();
+        System.out.print("CPF do dono do pet (ou '!sair' para voltar): ");
+        String cpf = CancelarAcao.readLineAllowExit(sc);
+        if (cpf == null) { System.out.println("Operação cancelada."); return; }
 
-        System.out.print("Nome do pet: ");
-        String nomePet = sc.nextLine();
+        System.out.print("Nome do pet (ou '!sair' para voltar): ");
+        String nomePet = CancelarAcao.readLineAllowExit(sc);
+        if (nomePet == null) { System.out.println("Operação cancelada."); return; }
 
         sistema.registrarInternacao(cpf, nomePet);
 

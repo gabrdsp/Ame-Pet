@@ -2,7 +2,6 @@ package br.edu.amepet.menu;
 
 import br.edu.amepet.gerenciador.GerenciadorPetShop;
 import br.edu.amepet.modelo.produto.Produto;
-
 import java.util.Scanner;
 
 public class MenuLoja {
@@ -62,21 +61,27 @@ public class MenuLoja {
                 case 2 -> {
                     System.out.println("---- Cadastro de Produto ----");
 
-                    System.out.print("Código do Produto: ");
-                    String codigo = sc.nextLine();
+                    System.out.print("Código do Produto (ou '!sair' para cancelar): ");
+                    String codigo = CancelarAcao.readLineAllowExit(sc);
+                    if (codigo == null) { System.out.println("Cadastro cancelado."); break; }
 
-                    System.out.print("Nome do Produto: ");
-                    String nome = sc.nextLine();
+                    System.out.print("Nome do Produto (ou '!sair' para cancelar): ");
+                    String nome = CancelarAcao.readLineAllowExit(sc);
+                    if (nome == null) { System.out.println("Cadastro cancelado."); break; }
 
-                    System.out.print("Categoria: ");
-                    String categoria = sc.nextLine();
+                    System.out.print("Categoria (ou '!sair' para cancelar): ");
+                    String categoria = CancelarAcao.readLineAllowExit(sc);
+                    if (categoria == null) { System.out.println("Cadastro cancelado."); break; }
 
-                    System.out.print("Preço: ");
-                    double preco = sc.nextDouble();
+                    System.out.print("Preço (ou '!sair' para cancelar): ");
+                    Double precoObj = CancelarAcao.readDoubleAllowExit(sc);
+                    if (precoObj == null) { System.out.println("Cadastro cancelado ou preço inválido."); break; }
+                    double preco = precoObj;
 
-                    System.out.print("Quantidade: ");
-                    int quantidadeEstoque = sc.nextInt();
-                    sc.nextLine();
+                    System.out.print("Quantidade (ou '!sair' para cancelar): ");
+                    Integer qtdObj = CancelarAcao.readIntAllowExit(sc);
+                    if (qtdObj == null) { System.out.println("Cadastro cancelado ou quantidade inválida."); break; }
+                    int quantidadeEstoque = qtdObj;
 
                     Produto p = new Produto(codigo, nome, categoria, preco, quantidadeEstoque);
 
@@ -138,25 +143,30 @@ public class MenuLoja {
                 case 1 -> sistema.listarProdutos();
 
                 case 2 -> {
-                    System.out.print("Nome do produto: ");
-                    String nomeProduto = sc.nextLine();
+                    System.out.print("Nome do produto (ou '!sair' para cancelar): ");
+                    String nomeProduto = CancelarAcao.readLineAllowExit(sc);
+                    if (nomeProduto == null) { System.out.println("Operação cancelada."); break; }
 
-                    System.out.print("Quantidade vendida: ");
-                    int qtd = sc.nextInt();
-                    sc.nextLine();
+                    System.out.print("Quantidade vendida (ou '!sair' para cancelar): ");
+                    Integer qtdObj = CancelarAcao.readIntAllowExit(sc);
+                    if (qtdObj == null) { System.out.println("Operação cancelada ou quantidade inválida."); break; }
+                    int qtd = qtdObj;
 
                     sistema.registrarVenda(nomeProduto, qtd);
                     break;
                 }
 
                 case 3 -> {
-                    System.out.print("Nome do produto: ");
-                    String nomeProduto = sc.nextLine();
+                    System.out.print("Nome do produto (ou '!sair' para cancelar): ");
+                    String nomeProduto = CancelarAcao.readLineAllowExit(sc);
+                    if (nomeProduto == null) { System.out.println("Operação cancelada."); break; }
 
-                    System.out.print("Quantidade adicionada: ");
-                    int qtd = sc.nextInt();
+                    System.out.print("Quantidade adicionada (ou '!sair' para cancelar): ");
+                    Integer qtdObj2 = CancelarAcao.readIntAllowExit(sc);
+                    if (qtdObj2 == null) { System.out.println("Operação cancelada ou quantidade inválida."); break; }
+                    int qtd2 = qtdObj2;
 
-                    sistema.atualizarEstoque(nomeProduto, qtd);
+                    sistema.atualizarEstoque(nomeProduto, qtd2);
                     break;
                 }
 

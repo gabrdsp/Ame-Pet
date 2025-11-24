@@ -133,8 +133,23 @@ public class MenuCliente {
                     System.out.print("Peso (kg): ");
                     double peso = Double.parseDouble(sc.nextLine());
 
-                    System.out.print("CPF do Dono: ");
-                    String cpfDono = sc.nextLine();
+                    String cpfDono;
+                    boolean cancelCadastro = false;
+                    while (true) {
+                        System.out.print("CPF do Dono (ou '!sair' para voltar): ");
+                        cpfDono = sc.nextLine();
+                        if (cpfDono.equalsIgnoreCase("!sair")) {
+                            cancelCadastro = true;
+                            break;
+                        }
+                        if (sistema.buscarClientePorCpf(cpfDono) != null) break;
+                        System.out.println("Cliente não encontrado. Digite um CPF cadastrado ou '!sair' para voltar.");
+                    }
+
+                    if (cancelCadastro) {
+                        System.out.println("Cadastro de pet cancelado. Voltando ao menu de pets...\n");
+                        break;
+                    }
 
                     Pet pet = new Pet(nomePet, especie, raca, idade, peso, cpfDono);
                     sistema.adicionarPet(cpfDono, pet);

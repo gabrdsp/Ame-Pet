@@ -51,21 +51,27 @@ public class MenuCompraAdocao {
 
     public static void cadastrarPetVenda(){
         System.out.println("Cadastrando Pet para Venda...");
+        System.out.print("nome (ou '!sair' para cancelar): ");
+        String nome = CancelarAcao.readLineAllowExit(scanner);
+        if (nome == null) { System.out.println("Cadastro cancelado."); return; }
 
-        System.out.print("nome: ");
-        String nome = scanner.nextLine();
+        System.out.print("especie (ou '!sair' para cancelar): ");
+        String especie = CancelarAcao.readLineAllowExit(scanner);
+        if (especie == null) { System.out.println("Cadastro cancelado."); return; }
 
-        System.out.print("especie: ");
-        String especie = scanner.nextLine();
+        System.out.print("raca (ou '!sair' para cancelar): ");
+        String raca = CancelarAcao.readLineAllowExit(scanner);
+        if (raca == null) { System.out.println("Cadastro cancelado."); return; }
 
-        System.out.print("raca: ");
-        String raca = scanner.nextLine();
+        System.out.print("idade (ou '!sair' para cancelar): ");
+        Integer idadeObj = CancelarAcao.readIntAllowExit(scanner);
+        if (idadeObj == null) { System.out.println("Cadastro cancelado ou idade inválida."); return; }
+        int idade = idadeObj;
 
-        System.out.print("idade: ");
-        int idade = Integer.parseInt(scanner.nextLine());
-
-        System.out.print("preco: ");
-        double preco = Double.parseDouble(scanner.nextLine());
+        System.out.print("preco (ou '!sair' para cancelar): ");
+        Double precoObj = CancelarAcao.readDoubleAllowExit(scanner);
+        if (precoObj == null) { System.out.println("Cadastro cancelado ou preço inválido."); return; }
+        double preco = precoObj;
 
         PetsVenda petVenda = new PetsVenda(nome, especie, raca, idade, preco);
         gerenciador.cadastrarPetVenda(petVenda);
@@ -73,18 +79,22 @@ public class MenuCompraAdocao {
 
     private static void cadastrarPetAdocao(){
         System.out.println("Cadastrando Pet para Adoção...");
+        System.out.print("nome (ou '!sair' para cancelar): ");
+        String nome = CancelarAcao.readLineAllowExit(scanner);
+        if (nome == null) { System.out.println("Cadastro cancelado."); return; }
 
-        System.out.print("nome: ");
-        String nome = scanner.nextLine();
+        System.out.print("especie (ou '!sair' para cancelar): ");
+        String especie = CancelarAcao.readLineAllowExit(scanner);
+        if (especie == null) { System.out.println("Cadastro cancelado."); return; }
 
-        System.out.print("especie: ");
-        String especie = scanner.nextLine();
+        System.out.print("raca (ou '!sair' para cancelar): ");
+        String raca = CancelarAcao.readLineAllowExit(scanner);
+        if (raca == null) { System.out.println("Cadastro cancelado."); return; }
 
-        System.out.print("raca: ");
-        String raca = scanner.nextLine();
-
-        System.out.print("idade: ");
-        int idade = Integer.parseInt(scanner.nextLine());
+        System.out.print("idade (ou '!sair' para cancelar): ");
+        Integer idadeObj = CancelarAcao.readIntAllowExit(scanner);
+        if (idadeObj == null) { System.out.println("Cadastro cancelado ou idade inválida."); return; }
+        int idade = idadeObj;
 
         PetAdocao petAdocao = new PetAdocao(nome, especie, raca, idade);
         gerenciador.cadastrarPetParaAdoção(petAdocao);
@@ -93,9 +103,9 @@ public class MenuCompraAdocao {
     private static void comprarPetsVenda(){
         System.out.println("Comprando Pet para Venda...");
         gerenciador.listarpetsvenda();
-
-        System.out.print("Digite o nome do pet que deseja comprar: ");
-        String nome = scanner.nextLine();
+        System.out.print("Digite o nome do pet que deseja comprar (ou '!sair' para voltar): ");
+        String nome = CancelarAcao.readLineAllowExit(scanner);
+        if (nome == null) { System.out.println("Operação cancelada."); return; }
 
         gerenciador.comprarPet(nome);
     }
@@ -103,9 +113,9 @@ public class MenuCompraAdocao {
     private static void adotarPet(){
         System.out.println("Adotando Pet...");
         gerenciador.listarPetsadocao();
-
-        System.out.print("Digite o nome do pet que deseja adotar: ");
-        String nome = scanner.nextLine();
+        System.out.print("Digite o nome do pet que deseja adotar (ou '!sair' para voltar): ");
+        String nome = CancelarAcao.readLineAllowExit(scanner);
+        if (nome == null) { System.out.println("Operação cancelada."); return; }
 
         gerenciador.adotarPet(nome);
     }

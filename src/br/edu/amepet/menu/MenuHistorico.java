@@ -38,11 +38,13 @@ public class MenuHistorico {
 
         System.out.println("---- Histórico de Serviços ----");
 
-        System.out.print("CPF do dono: ");
-        String cpf = sc.nextLine();
+        System.out.print("CPF do dono (ou '!sair' para voltar): ");
+        String cpf = CancelarAcao.readLineAllowExit(sc);
+        if (cpf == null) { System.out.println("Operação cancelada."); return; }
 
-        System.out.print("Nome do pet: ");
-        String nomePet = sc.nextLine();
+        System.out.print("Nome do pet (ou '!sair' para voltar): ");
+        String nomePet = CancelarAcao.readLineAllowExit(sc);
+        if (nomePet == null) { System.out.println("Operação cancelada."); return; }
 
         sistema.mostrarHistoricoServicos(cpf, nomePet); // método esperado no sistema
     }
@@ -51,11 +53,13 @@ public class MenuHistorico {
 
         System.out.println("---- Histórico Médico ----");
 
-        System.out.print("CPF do dono: ");
-        String cpf = sc.nextLine();
+        System.out.print("CPF do dono (ou '!sair' para voltar): ");
+        String cpf = CancelarAcao.readLineAllowExit(sc);
+        if (cpf == null) { System.out.println("Operação cancelada."); return; }
 
-        System.out.print("Nome do pet: ");
-        String nomePet = sc.nextLine();
+        System.out.print("Nome do pet (ou '!sair' para voltar): ");
+        String nomePet = CancelarAcao.readLineAllowExit(sc);
+        if (nomePet == null) { System.out.println("Operação cancelada."); return; }
 
         sistema.mostrarHistoricoMedico(cpf, nomePet); // método esperado no sistema
     }
