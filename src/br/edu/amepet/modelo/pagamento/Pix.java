@@ -1,5 +1,7 @@
 package src.br.edu.amepet.modelo.pagamento;
 
+import br.edu.amepet.modelo.pagamento.FormaDePagamento;
+
 /**
  * Estratégia Concreta para pagamento via PIX.
  * Aplica um desconto de 5% para incentivar o uso (custo zero de taxa).

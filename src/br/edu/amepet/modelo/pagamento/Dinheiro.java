@@ -1,5 +1,7 @@
 package src.br.edu.amepet.modelo.pagamento;
 
+import br.edu.amepet.modelo.pagamento.FormaDePagamento;
+
 /**
  * Estratégia Concreta para pagamento em Dinheiro.
  * Aplica um desconto fixo de 10%.

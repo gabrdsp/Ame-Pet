@@ -2,10 +2,10 @@ package br.edu.amepet.menu;
 
 import br.edu.amepet.gerenciador.GerenciadorPetShop;
 import br.edu.amepet.modelo.pagamento.CartaoCredito;
-import br.edu.amepet.modelo.pagamento.CartaoDebito;
-import br.edu.amepet.modelo.pagamento.Dinheiro;
+
+
 import br.edu.amepet.modelo.pagamento.FormaDePagamento;
-import br.edu.amepet.modelo.pagamento.Pix;
+
 import br.edu.amepet.modelo.pet.PetAdocao;
 import br.edu.amepet.modelo.pet.PetsVenda;
 import java.util.Scanner;

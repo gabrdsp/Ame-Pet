@@ -191,18 +191,14 @@ public class GerenciadorPetShop {
         System.out.println("✔ Serviço registrado com sucesso!");
     }
 
-    public void registrarBanho(String cpf, String nomePet) {
-        Cliente c = buscarClientePorCpf(cpf);
-        Pet p = buscarPetPorNome(nomePet);
+    public void registrarBanho(String codigo, String nome, double preco, Cliente cliente, Pet pet, String data, String tipoBanho, int tempoBanho) {
 
-        registrarAtendimento(new Banho(c, p));
+
+        registrarAtendimento(new Banho(codigo, nome, preco, cliente, pet, data, tipoBanho,  tempoBanho));
     }
 
-    public void registrarTosa(String cpf, String nomePet) {
-        Cliente c = buscarClientePorCpf(cpf);
-        Pet p = buscarPetPorNome(nomePet);
-
-        registrarAtendimento(new Tosa(c, p));
+    public void registrarTosa(String codigo, String nome, double preco, Cliente cliente, Pet pet, String data, String tipoTosa, int duracaoHoras) {
+        registrarAtendimento(new Tosa(codigo, nome, preco, cliente, pet, data, tipoTosa,duracaoHoras));
     }
 
     public void registrarExame(String codigo, double preco, Cliente cliente, Pet pet, String data, String tipoExame) {
