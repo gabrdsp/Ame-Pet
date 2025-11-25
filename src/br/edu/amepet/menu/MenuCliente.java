@@ -23,6 +23,7 @@ public class MenuCliente {
             System.out.print("Escolha uma opção: ");
 
             opcao = sc.nextInt();
+            sc.nextLine();
 
             switch (opcao) {
                 case 1 -> menuCadastroCliente(sistema, sc);

@@ -20,7 +20,11 @@ public class PetsVenda {
         return nome;
     }
 
+    public double getPreco() {
+        return preco;
+    }
+
     public String detalhes() {
-        return "Nome: " + nome + ", Espécie: " + especie + ", Raça: " + raca + ", Idade: " + idade + " anos, Preço: R$" + preco;
+        return "| Nome: " + nome + "| Espécie: " + especie + "| Raça: " + raca + "| Idade: " + idade + " anos| Preço: R$" + preco;
     }
 }

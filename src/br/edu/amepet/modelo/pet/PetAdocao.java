@@ -18,6 +18,6 @@ public class PetAdocao {
     }
 
     public String detalhes() {
-        return "Nome: " + nome + ", Espécie: " + especie + ", Raça: " + raca + ", Idade: " + idade + " anos";
+        return "| Nome: " + nome + "| Espécie: " + especie + "| Raça: " + raca + "| Idade: " + idade + " anos";
     }
 }

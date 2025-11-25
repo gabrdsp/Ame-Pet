@@ -1,4 +1,4 @@
-package src.br.edu.amepet.modelo.pagamento;
+package br.edu.amepet.modelo.pagamento;
 
 public class CartaoCredito implements FormaDePagamento {
     // Taxa de crédito (ex: 4.5%)

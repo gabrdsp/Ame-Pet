@@ -20,6 +20,8 @@ public class GerenciadorPetShop {
     private List<Atendimento> atendimentos = new ArrayList<>();
     private List<PetsVenda> petsVenda = new ArrayList<>();
     private List<PetAdocao> petsAdoção = new ArrayList<>();
+    private List<br.edu.amepet.modelo.venda.Venda> vendas = new ArrayList<>();
+    private int proximoIdVenda = 1;
     
     // ============================================================
     //                   CADASTROS BÁSICOS
@@ -264,7 +266,20 @@ public class GerenciadorPetShop {
 
     public void relatorioVendas() {
         System.out.println("\n>>> VENDAS <<<");
-        // caso você queira armazenar vendas futuramente
+        if (vendas.isEmpty()) {
+            System.out.println("Nenhuma venda registrada.");
+            return;
+        }
+
+        double totalReceita = 0.0;
+        System.out.println("Relatório de vendas (recibos):");
+        for (br.edu.amepet.modelo.venda.Venda v : vendas) {
+            System.out.println(v.gerarRecibo());
+            totalReceita += v.getValorFinal();
+        }
+
+        System.out.printf("Total de vendas: %d\n", vendas.size());
+        System.out.printf("Receita total: R$%.2f\n", totalReceita);
     }
 
     // ============================================================
@@ -329,6 +344,15 @@ public class GerenciadorPetShop {
         System.out.println("Pet para compra cadastrado com sucesso!");
     }
 
+    public PetsVenda obterPetVendaPorNome(String nome) {
+        for (PetsVenda pv : petsVenda) {
+            if (pv.getNome().equalsIgnoreCase(nome)) {
+                return pv;
+            }
+        }
+        return null;
+    }
+
     public void listarpetsvenda(){
         if (petsVenda.isEmpty()) {
             System.out.println("Nenhum pet disponível para venda no momento.");
@@ -344,14 +368,42 @@ public class GerenciadorPetShop {
 
     public void comprarPet(String nome){
         for (int i = 0; i < petsVenda.size(); i++) {
-        PetsVenda pet = petsVenda.get(i);
-        if (pet.getNome().equalsIgnoreCase(nome)) {
-            petsVenda.remove(i);
-            System.out.println("Você comprou o pet com sucesso!");
-            System.out.println(pet.detalhes());
-            return;
+            PetsVenda pet = petsVenda.get(i);
+            if (pet.getNome().equalsIgnoreCase(nome)) {
+                petsVenda.remove(i);
+                System.out.println("Você comprou o pet com sucesso!");
+                System.out.println(pet.detalhes());
+                return;
+            }
         }
     }
+
+    public void comprarPetComVenda(String nome, String cpfComprador, String formaPagamento, double valorFinal) {
+        for (int i = 0; i < petsVenda.size(); i++) {
+            PetsVenda pet = petsVenda.get(i);
+            if (pet.getNome().equalsIgnoreCase(nome)) {
+                petsVenda.remove(i);
+
+                String id = String.format("V%06d", proximoIdVenda++);
+                java.time.LocalDateTime now = java.time.LocalDateTime.now();
+                br.edu.amepet.modelo.venda.Venda v = new br.edu.amepet.modelo.venda.Venda(
+                        id,
+                        cpfComprador,
+                        pet.getNome(),
+                        pet.getPreco(),
+                        formaPagamento,
+                        valorFinal,
+                        now,
+                        "PAGO"
+                );
+                vendas.add(v);
+
+                System.out.println("Compra registrada com sucesso!");
+                System.out.println(v.gerarRecibo());
+                return;
+            }
+        }
+        System.out.println("Pet não encontrado para compra.");
     }
 
     public void cadastrarPetParaAdoção(PetAdocao pa) {

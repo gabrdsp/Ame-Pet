@@ -15,7 +15,7 @@ public class CancelarAcao {
 
     public static Integer readIntAllowExit(Scanner sc) {
         String line = readLineAllowExit(sc);
-        if (line == null) return null;1
+        if (line == null) return null;
         
         try {
             return Integer.parseInt(line);

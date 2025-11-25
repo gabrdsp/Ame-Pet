@@ -1,16 +1,24 @@
 package br.edu.amepet.menu;
 
 import br.edu.amepet.gerenciador.GerenciadorPetShop;
+import br.edu.amepet.modelo.pagamento.CartaoCredito;
+import br.edu.amepet.modelo.pagamento.CartaoDebito;
+import br.edu.amepet.modelo.pagamento.Dinheiro;
+import br.edu.amepet.modelo.pagamento.FormaDePagamento;
+import br.edu.amepet.modelo.pagamento.Pix;
 import br.edu.amepet.modelo.pet.PetAdocao;
 import br.edu.amepet.modelo.pet.PetsVenda;
 import java.util.Scanner;
 
 public class MenuCompraAdocao {
     private static Scanner scanner = new Scanner(System.in);
-    private static GerenciadorPetShop gerenciador = new GerenciadorPetShop();
+    private static GerenciadorPetShop sistemaAtual;
 
     public static void exibir(GerenciadorPetShop sistema, Scanner sc) {
         int opcao;
+        // use the GerenciadorPetShop and Scanner passed from Main
+        sistemaAtual = sistema;
+        scanner = sc;
             System.out.println("╔════════════════════════════════════════════════╗");
             System.out.println("║                  MENU CLIENTE                  ║");
             System.out.println("╠════════════════════════════════════════════════╣");
@@ -74,7 +82,7 @@ public class MenuCompraAdocao {
         double preco = precoObj;
 
         PetsVenda petVenda = new PetsVenda(nome, especie, raca, idade, preco);
-        gerenciador.cadastrarPetVenda(petVenda);
+        sistemaAtual.cadastrarPetVenda(petVenda);
     }
 
     private static void cadastrarPetAdocao(){
@@ -97,26 +105,75 @@ public class MenuCompraAdocao {
         int idade = idadeObj;
 
         PetAdocao petAdocao = new PetAdocao(nome, especie, raca, idade);
-        gerenciador.cadastrarPetParaAdoção(petAdocao);
+        sistemaAtual.cadastrarPetParaAdoção(petAdocao);
     }
 
     private static void comprarPetsVenda(){
         System.out.println("Comprando Pet para Venda...");
-        gerenciador.listarpetsvenda();
+        sistemaAtual.listarpetsvenda();
         System.out.print("Digite o nome do pet que deseja comprar (ou '!sair' para voltar): ");
         String nome = CancelarAcao.readLineAllowExit(scanner);
         if (nome == null) { System.out.println("Operação cancelada."); return; }
 
-        gerenciador.comprarPet(nome);
+        PetsVenda pet = sistemaAtual.obterPetVendaPorNome(nome);
+        if (pet == null) {
+            System.out.println("Pet não encontrado.");
+            return;
+        }
+
+        System.out.printf("Preço do pet: R$%.2f%n", pet.getPreco());
+        System.out.println("Escolha a forma de pagamento:");
+        System.out.println("1 - Pix (5% desconto)");
+        System.out.println("2 - Dinheiro (10% desconto)");
+        System.out.println("3 - Cartão Débito (2% taxa)");
+        System.out.println("4 - Cartão Crédito (4.5% taxa)");
+        System.out.print("Opção: ");
+        int opc = lerOpcao();
+
+        FormaDePagamento forma;
+        switch (opc) {
+            case 1: forma = new Pix(); break;
+            case 2: forma = new Dinheiro(); break;
+            case 3: forma = new CartaoDebito(); break;
+            case 4: forma = new CartaoCredito(); break;
+            default:
+                System.out.println("Opção inválida. Operação cancelada.");
+                return;
+        }
+
+        double valorFinal = forma.calcularValorFinal(pet.getPreco());
+        System.out.printf("Valor final a pagar: R$%.2f%n", valorFinal);
+
+        System.out.print("Digite o CPF do comprador (ou '!sair' para cancelar): ");
+        String cpf = CancelarAcao.readLineAllowExit(scanner);
+        if (cpf == null) { System.out.println("Operação cancelada."); return; }
+
+        String formaStr;
+        switch (opc) {
+            case 1: formaStr = "PIX"; break;
+            case 2: formaStr = "Dinheiro"; break;
+            case 3: formaStr = "Cartao Debito"; break;
+            case 4: formaStr = "Cartao Credito"; break;
+            default: formaStr = "Desconhecida"; break;
+        }
+
+        System.out.print("Confirmar compra? (s/n): ");
+        String confirma = scanner.nextLine();
+        if (confirma.equalsIgnoreCase("s")) {
+            sistemaAtual.comprarPetComVenda(nome, cpf, formaStr, valorFinal);
+            System.out.println("Pagamento realizado. Obrigado pela compra!");
+        } else {
+            System.out.println("Compra cancelada.");
+        }
     }
 
     private static void adotarPet(){
         System.out.println("Adotando Pet...");
-        gerenciador.listarPetsadocao();
+        sistemaAtual.listarPetsadocao();
         System.out.print("Digite o nome do pet que deseja adotar (ou '!sair' para voltar): ");
         String nome = CancelarAcao.readLineAllowExit(scanner);
         if (nome == null) { System.out.println("Operação cancelada."); return; }
 
-        gerenciador.adotarPet(nome);
+        sistemaAtual.adotarPet(nome);
     }
 }
