@@ -8,7 +8,6 @@ import br.edu.amepet.modelo.pet.Pet;
 import br.edu.amepet.modelo.pet.PetAdocao;
 import br.edu.amepet.modelo.pet.PetsVenda;
 import br.edu.amepet.modelo.produto.Produto;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +21,40 @@ public class GerenciadorPetShop {
     private List<PetAdocao> petsAdoção = new ArrayList<>();
     private List<br.edu.amepet.modelo.venda.Venda> vendas = new ArrayList<>();
     private int proximoIdVenda = 1;
-    
+
+    public GerenciadorPetShop() {
+        carregarDadosIniciais();
+    }
+
+    private void carregarDadosIniciais() {
+
+        // ------------------------------------------------------------
+        // FUNCIONÁRIO PADRÃO PARA LOGIN
+        // ------------------------------------------------------------
+        Funcionario admin = new Funcionario(
+                "Administrador do Sistema",
+                "000.000.000-00",
+                "(00) 00000-0000",
+                "Gerente",
+                3000.00,
+                "01/01/2024",
+                "admin",   // usuário
+                "1234"     // senha
+        );
+        pessoas.add(admin);
+
+        // ------------------------------------------------------------
+        // CLIENTE PADRÃO PARA TESTES
+        // ------------------------------------------------------------
+        Cliente clienteTeste = new Cliente(
+                "ClienteTeste",
+                "123",
+                "(84) 90000-0000",
+                "Rua Exemplo, 123"
+        );
+        pessoas.add(clienteTeste);
+    }
+
     // ============================================================
     //                   CADASTROS BÁSICOS
     // ============================================================
