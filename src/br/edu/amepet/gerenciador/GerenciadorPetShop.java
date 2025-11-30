@@ -225,7 +225,6 @@ public class GerenciadorPetShop {
 
     public void registrarBanho(String codigo, String nome, double preco, Cliente cliente, Pet pet, String data, String tipoBanho, int tempoBanho) {
 
-
         registrarAtendimento(new Banho(codigo, nome, preco, cliente, pet, data, tipoBanho,  tempoBanho));
     }
 
@@ -233,49 +232,167 @@ public class GerenciadorPetShop {
         registrarAtendimento(new Tosa(codigo, nome, preco, cliente, pet, data, tipoTosa,duracaoHoras));
     }
 
-    public void registrarExame(String codigo, double preco, Cliente cliente, Pet pet, String data, String tipoExame) {
-       Exame exame = new Exame(codigo,preco, cliente, pet, data,tipoExame);
+    public void registrarExame(String codigo, double preco, String cpf, String nomePet, String data, String tipoExame) {
+        // Buscar cliente
+        Cliente cliente = buscarClientePorCpf(cpf);
+        if (cliente == null) {
+            System.out.println(" Cliente não encontrado!");
+            return;
+        }
+
+        // Buscar pet
+        Pet pet = buscarPetPorNome(nomePet);
+        if (pet == null) {
+            System.out.println("Pet não encontrado!");
+            return;
+        }
+
+        // Criar o exame com todos os atributos
+        Exame exame = new Exame(codigo, preco, cliente, pet, data, tipoExame);
+
+        // Registrar na lista de atendimentos
+        registrarAtendimento(exame);
     }
 
-    public void registrarConsulta(String codigo, double preco, Cliente cliente, Pet pet, String data, String veterinario) {
-              Consulta consulta = new Consulta(codigo, preco, cliente, pet, data, veterinario);
-              registrarAtendimento(consulta);
+    public void registrarConsulta(String codigo, double preco, String cpf, String nomePet, String data, String veterinario) {
+
+        // Buscar cliente
+        Cliente cliente = buscarClientePorCpf(cpf);
+        if (cliente == null) {
+            System.out.println(" Cliente não encontrado!");
+            return;
+        }
+
+        // Buscar pet
+        Pet pet = buscarPetPorNome(nomePet);
+        if (pet == null) {
+            System.out.println(" Pet não encontrado!");
+            return;
+        }
+
+        // Criar a consulta
+        Consulta consulta = new Consulta(codigo, preco, cliente, pet, data, veterinario);
+
+        // Registrar na lista de atendimentos
+        registrarAtendimento(consulta);
     }
 
-    public void registrarVacina(String codigo, double preco, Cliente cliente, Pet pet, String data, String tipoVacina) {
-          Vacina vacina = new Vacina(codigo, preco, cliente, pet, data, tipoVacina);
-          registrarAtendimento(vacina);
+
+    public void registrarVacina(String codigo, double preco, String cpf, String nomePet, String data, String tipoVacina) {
+
+        // Buscar cliente
+        Cliente cliente = buscarClientePorCpf(cpf);
+        if (cliente == null) {
+            System.out.println(" Cliente não encontrado!");
+            return;
+        }
+
+        // Buscar pet
+        Pet pet = buscarPetPorNome(nomePet);
+        if (pet == null) {
+            System.out.println(" Pet não encontrado!");
+            return;
+        }
+
+        // Criar o atendimento de vacina
+        Vacina vacina = new Vacina(codigo, preco, cliente, pet, data, tipoVacina);
+
+        // Registrar
+        registrarAtendimento(vacina);
     }
 
-    public void registrarCirurgia(String codigo, double preco, Cliente cliente, Pet pet, String data, String procedimento, int duracaoHoras) {
 
-        Cirurgia cirurgia = new Cirurgia(codigo, preco, cliente, pet, data, procedimento, duracaoHoras
-        );
+    public void registrarCirurgia(String codigo, double preco, String cpf, String nomePet,
+                                  String data, String procedimento, int duracaoHoras) {
+
+        // Buscar cliente
+        Cliente cliente = buscarClientePorCpf(cpf);
+        if (cliente == null) {
+            System.out.println(" Cliente não encontrado!");
+            return;
+        }
+
+        // Buscar pet
+        Pet pet = buscarPetPorNome(nomePet);
+        if (pet == null) {
+            System.out.println(" Pet não encontrado!");
+            return;
+        }
+
+        // Criar cirurgia
+        Cirurgia cirurgia = new Cirurgia(codigo, preco, cliente, pet, data, procedimento, duracaoHoras);
+
+        // Registrar atendimento
         registrarAtendimento(cirurgia);
     }
 
 
-    public void registrarInternacao(String codigo, double preco, Cliente cliente, Pet pet, String data, String motivo, int diasInternado) {
-       Internacao internacao = new Internacao(codigo,preco,cliente,pet,data,motivo,diasInternado);
-       registrarAtendimento(internacao);
+
+    public void registrarInternacao(String codigo, double preco, String cpf, String nomePet,
+                                    String dataEntrada, String motivo, int diasInternado) {
+
+        // 1. Buscar cliente
+        Cliente cliente = buscarClientePorCpf(cpf);
+        if (cliente == null) {
+            System.out.println("Cliente não encontrado!");
+            return;
+        }
+
+        // 2. Buscar pet
+        Pet pet = buscarPetPorNome(nomePet);
+        if (pet == null) {
+            System.out.println("Pet não encontrado!");
+            return;
+        }
+
+        // 3. Criar objeto Internacao
+        Internacao internacao = new Internacao(codigo, preco, cliente, pet, dataEntrada, motivo, diasInternado
+        );
+
+        // 4. Registrar no sistema
+        registrarAtendimento(internacao);
     }
+
 
     // ============================================================
     //                      HISTÓRICO
     // ============================================================
 
-    public void mostrarHistoricoServicos(String cpf, String nomePet) {
+    public void mostrarHistorico(String cpf, String nomePet) {
 
-    }
+        Cliente cliente = buscarClientePorCpf(cpf);
+        if (cliente == null) {
+            System.out.println("Cliente não encontrado!");
+            return;
+        }
 
-    public void mostrarHistoricoMedico(String cpf, String nomePet) {
+        Pet pet = buscarPetPorNome(nomePet);
+        if (pet == null) {
+            System.out.println("Pet não encontrado!");
+            return;
+        }
+
+        System.out.println("\n==== Histórico de Serviços ====");
+        System.out.println("Cliente: " + cliente.getNome());
+        System.out.println("Pet: " + pet.getNome());
+        System.out.println("--------------------------------");
+
+        boolean encontrou = false;
+
         for (Atendimento a : atendimentos) {
-                if (a.getCliente().getCpf().equals(cpf)
-                        && a.getPet().getNome().equalsIgnoreCase(nomePet)) {
-                    System.out.println(a.exibirInformacoes());
-                }
+            if (a.getCliente().getCpf().equals(cpf)
+                    && a.getPet().getNome().equalsIgnoreCase(nomePet)) {
+                System.out.println(a.exibirInformacoes());
+                encontrou = true;
+            }
+        }
+
+        if (!encontrou) {
+            System.out.println("Nenhum serviço encontrado para este pet.");
         }
     }
+
+
     // ============================================================
     //                      RELATÓRIOS
     // ============================================================
