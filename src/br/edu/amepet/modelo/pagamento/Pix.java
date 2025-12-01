@@ -1,6 +1,4 @@
-package src.br.edu.amepet.modelo.pagamento;
-
-import br.edu.amepet.modelo.pagamento.FormaDePagamento;
+package br.edu.amepet.modelo.pagamento;
 
 /**
  * Estratégia Concreta para pagamento via PIX.

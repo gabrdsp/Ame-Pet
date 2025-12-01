@@ -386,7 +386,7 @@ public class GerenciadorPetShop {
     //                      HISTÓRICO
     // ============================================================
 
-    public void mostrarHistorico(String cpf, String nomePet) {
+    public void mostrarHistoricoServicos(String cpf, String nomePet) {
 
         Cliente cliente = buscarClientePorCpf(cpf);
         if (cliente == null) {

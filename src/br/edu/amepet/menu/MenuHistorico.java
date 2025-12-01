@@ -61,6 +61,6 @@ public class MenuHistorico {
         String nomePet = CancelarAcao.readLineAllowExit(sc);
         if (nomePet == null) { System.out.println("Operação cancelada."); return; }
 
-        sistema.mostrarHistoricoMedico(cpf, nomePet); // método esperado no sistema
+        sistema.mostrarHistoricoServicos(cpf, nomePet); // método esperado no sistema
     }
 }

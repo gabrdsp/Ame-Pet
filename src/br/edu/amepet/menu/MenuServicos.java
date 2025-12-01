@@ -128,6 +128,7 @@ public class MenuServicos {
     private static void registrarExame(GerenciadorPetShop sistema, Scanner sc) {
 
         System.out.println("---- Registro de Exame ----");
+        
 
         // 1. CPF do dono
         System.out.print("CPF do dono do pet (ou '!sair' para voltar): ");

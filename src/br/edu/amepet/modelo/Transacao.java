@@ -1,4 +1,4 @@
-package src.br.edu.amepet.modelo;
+package br.edu.amepet.modelo;
 import br.edu.amepet.modelo.atendimento.Atendimento;
 import br.edu.amepet.modelo.produto.Produto;
 import br.edu.amepet.modelo.pessoa.Cliente;

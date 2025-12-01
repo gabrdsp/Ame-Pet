@@ -1,6 +1,5 @@
-package src.br.edu.amepet.modelo.pagamento;
+package br.edu.amepet.modelo.pagamento;
 
-import br.edu.amepet.modelo.pagamento.FormaDePagamento;
 
 /**
  * Estratégia Concreta para pagamento em Dinheiro.
