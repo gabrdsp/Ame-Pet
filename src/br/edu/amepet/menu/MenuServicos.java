@@ -51,15 +51,34 @@ public class MenuServicos {
 
         System.out.println("---- Registro de Banho ----");
 
+        //1. CPF do dono do pet
         System.out.print("CPF do dono do pet (ou '!sair' para voltar): ");
         String cpf = CancelarAcao.readLineAllowExit(sc);
         if (cpf == null) { System.out.println("Operação cancelada."); return; }
 
+        //2. Nome do pet
         System.out.print("Nome do pet (ou '!sair' para voltar): ");
         String nomePet = CancelarAcao.readLineAllowExit(sc);
         if (nomePet == null) { System.out.println("Operação cancelada."); return; }
 
-        sistema.registrarBanho(cpf, nomePet);
+        //3. Código
+        System.out.print("Código do Banho: ");
+        String codigo = sc.nextLine();
+
+        //4. Preço
+        System.out.print("Preço do Banho: ");
+        double preco = sc.nextDouble();
+        sc.nextLine();
+
+        //5. Data
+        System.out.print("Data do procedimento (ex: 2025-12-01): ");
+        String data = sc.nextLine();
+
+        //6. Tipo de banho
+        System.out.print("Tipo de banho: ");
+        String tipoBanho = sc.nextLine();
+
+        sistema.registrarBanho(codigo, preco, cpf, nomePet, data, tipoBanho);
 
         System.out.println("✔ Banho registrado com sucesso!");
     }
@@ -71,16 +90,35 @@ public class MenuServicos {
 
         System.out.println("---- Registro de Tosa ----");
 
+        //1. CPF do dono do pet
         System.out.print("CPF do dono do pet (ou '!sair' para voltar): ");
         String cpf = CancelarAcao.readLineAllowExit(sc);
         if (cpf == null) { System.out.println("Operação cancelada."); return; }
 
+        //2. Nome do pet
         System.out.print("Nome do pet (ou '!sair' para voltar): ");
         String nomePet = CancelarAcao.readLineAllowExit(sc);
         if (nomePet == null) { System.out.println("Operação cancelada."); return; }
 
-        sistema.registrarTosa(cpf, nomePet);
+        //3. Código
+        System.out.print("Código da Tosa: ");
+        String codigo = sc.nextLine();
 
+        //4. Preço
+        System.out.print("Preço da Tosa: ");
+        double preco = sc.nextDouble();
+        sc.nextLine();
+
+        //5. Data
+        System.out.print("Data do procedimento (ex: 2025-12-01): ");
+        String data = sc.nextLine();
+
+        //6. Tipo de Tosa
+        System.out.print("Tipo de tosa: ");
+        String tipoTosa = sc.nextLine();
+
+        //Enviar para o sistema
+        sistema.registrarTosa(codigo, preco, cpf, nomePet, data, tipoTosa);
         System.out.println("✔ Tosa registrada com sucesso!");
     }
 

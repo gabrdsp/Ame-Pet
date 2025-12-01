@@ -223,13 +223,41 @@ public class GerenciadorPetShop {
         System.out.println("✔ Serviço registrado com sucesso!");
     }
 
-    public void registrarBanho(String codigo, String nome, double preco, Cliente cliente, Pet pet, String data, String tipoBanho, int tempoBanho) {
+    public void registrarBanho(String codigo, double preco, String cpf, String nomePet, String data, String tipoBanho) {
+        Cliente cliente = buscarClientePorCpf(cpf);
+        if(cliente == null){
+            System.out.println("Cliente não encontrado!");
+            return;
+        }
 
-        registrarAtendimento(new Banho(codigo, nome, preco, cliente, pet, data, tipoBanho,  tempoBanho));
+        Pet pet = buscarPetPorNome(nomePet);
+        if(pet == null){
+            System.out.println("Pet não encontrado!");
+            return;
+        }
+
+        Banho banho = new Banho(codigo, preco, cliente, pet, data, tipoBanho);
+
+        registrarAtendimento(banho);
+        
     }
 
-    public void registrarTosa(String codigo, String nome, double preco, Cliente cliente, Pet pet, String data, String tipoTosa, int duracaoHoras) {
-        registrarAtendimento(new Tosa(codigo, nome, preco, cliente, pet, data, tipoTosa,duracaoHoras));
+    public void registrarTosa(String codigo, double preco, String cpf, String nomePet, String data, String tipoTosa) {
+        Cliente cliente = buscarClientePorCpf(cpf);
+        if(cliente == null){
+            System.out.println("Cliente não encontrado!");
+            return;
+        }
+
+        Pet pet = buscarPetPorNome(nomePet);
+        if(pet == null){
+            System.out.println("Pet não encontrado!");
+            return;
+        }
+
+        Tosa tosa = new Tosa(codigo, preco, cliente, pet, data, tipoTosa);
+
+        registrarAtendimento(tosa);
     }
 
     public void registrarExame(String codigo, double preco, String cpf, String nomePet, String data, String tipoExame) {

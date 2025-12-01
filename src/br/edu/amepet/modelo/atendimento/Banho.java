@@ -5,12 +5,10 @@ import br.edu.amepet.modelo.pet.Pet;
 
 public class Banho extends Atendimento{
     private String tipoBanho;
-    private int tempoBanho;
 
-    public Banho(String codigo, String nome, double preco, Cliente cliente, Pet pet, String data, String tipoBanho, int tempoBanho){
-        super(codigo, nome, preco, cliente, pet, data);
+    public Banho(String codigo, double preco, Cliente cliente, Pet pet, String data, String tipoBanho){
+        super(codigo, "Banho", preco, cliente, pet, data);
         this.tipoBanho = tipoBanho;
-        this.tempoBanho = tempoBanho;
     }
 
     public String getTipoBanho(){
@@ -19,6 +17,6 @@ public class Banho extends Atendimento{
 
     @Override
     public String exibirInformacoes(){
-        return "== Banho ==\n" + informacoesBase() + "Procedimento: " + tipoBanho + "Duração: " + tempoBanho + "n";
+        return "== Banho ==\n" + informacoesBase() + "Procedimento: " + tipoBanho + "\n";
     }
 }
