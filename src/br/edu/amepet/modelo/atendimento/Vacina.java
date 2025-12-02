@@ -15,6 +15,13 @@ public class Vacina extends Atendimento{
 
     @Override
     public String exibirInformacoes() {
-        return "=== Vacina ===\n" + informacoesBase() + "Tipo de Vacina: " + tipoVacina+ "\n";
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n╔════════════════════════════════════════════════╗\n");
+        sb.append("║                     VACINA                       ║\n");
+        sb.append("╠════════════════════════════════════════════════╣\n");
+        sb.append(informacoesBase()).append("\n");
+        sb.append(String.format("  Tipo de Vacina: %s\n", tipoVacina));
+        sb.append("╚════════════════════════════════════════════════╝\n");
+        return sb.toString();
     }
 }

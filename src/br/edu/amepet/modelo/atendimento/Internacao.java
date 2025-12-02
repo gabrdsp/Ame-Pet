@@ -24,6 +24,14 @@ public class Internacao extends Atendimento {
 
     @Override
     public String exibirInformacoes() {
-        return "=== Internação ===\n" + informacoesBase() + "Motivo: " + motivo+ "Dias internado: " + diasInternado + "\n";
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n╔════════════════════════════════════════════════╗\n");
+        sb.append("║                   INTERNAÇÃO                     ║\n");
+        sb.append("╠════════════════════════════════════════════════╣\n");
+        sb.append(informacoesBase()).append("\n");
+        sb.append(String.format("  Motivo: %s\n", motivo));
+        sb.append(String.format("  Dias internado: %d\n", diasInternado));
+        sb.append("╚════════════════════════════════════════════════╝\n");
+        return sb.toString();
     }
 }

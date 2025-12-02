@@ -62,15 +62,20 @@ public class Venda {
 
     public String gerarRecibo() {
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-        return "--- Recibo ---\n" +
-                "Pedido: " + id + "\n" +
-                "Data: " + dataHora.format(fmt) + "\n" +
-                "Cliente (CPF): " + cpfCliente + "\n" +
-                "Pet: " + nomePet + "\n" +
-                String.format("Preço: R$%.2f\n", precoOriginal) +
-                "Forma de pagamento: " + formaPagamento + "\n" +
-                String.format("Valor pago: R$%.2f\n", valorFinal) +
-                "Status: " + status + "\n" +
-                "----------------\n";
+        return "\n╔════════════════════════════════════════════════╗\n" +
+                "║                      RECIBO                     ║\n" +
+                "╠════════════════════════════════════════════════╣\n" +
+                String.format("║ Pedido: %-38s ║\n", id) +
+                String.format("║ Data: %-39s ║\n", dataHora.format(fmt)) +
+                String.format("║ Cliente (CPF): %-33s ║\n", cpfCliente) +
+                String.format("║ Pet: %-40s ║\n", nomePet) +
+                String.format("║ Preço: R$ %-35.2f ║\n", precoOriginal) +
+                String.format("║ Forma de pagamento: %-25s ║\n", formaPagamento) +
+                String.format("║ Valor pago: R$ %-31.2f ║\n", valorFinal) +
+                String.format("║ Status: %-38s ║\n", status) +
+                "║                                                ║\n" +
+                "║           Obrigado pela compra!                ║\n" +
+                "║              Volte sempre!                     ║\n" +
+                "╚════════════════════════════════════════════════╝\n";
     }
 }

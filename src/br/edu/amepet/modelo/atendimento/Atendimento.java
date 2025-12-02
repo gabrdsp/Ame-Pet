@@ -53,11 +53,11 @@ public abstract class Atendimento {
      * Usado pelo gerenciador para exibição/listagem.
      */
     protected String informacoesBase() {
-        return "Código: " + getCodigo() + "\n" +
-                "Cliente: " + getCliente().getNome() + " (" + getCliente().getCpf() + ")\n" +
-                "Pet: " + getPet().getNome() + "\n" +
-                "Data: " + getData() + "\n" +
-                "Preço: R$ " + getPreco() + "\n";
+        return String.format("  Código: %s\n", getCodigo()) +
+                String.format("  Cliente: %s (%s)\n", getCliente().getNome(), getCliente().getCpf()) +
+                String.format("  Pet: %s\n", getPet().getNome()) +
+                String.format("  Data: %s\n", getData()) +
+                String.format("  Preço: R$ %.2f", getPreco());
     }
 
     public abstract String exibirInformacoes();

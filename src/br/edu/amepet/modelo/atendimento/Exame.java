@@ -17,6 +17,13 @@ public class Exame extends Atendimento {
 
     @Override
     public String exibirInformacoes() {
-        return "=== Exame ===\n" + informacoesBase() + "Tipo de exame: " + tipoExame+ "\n";
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n╔════════════════════════════════════════════════╗\n");
+        sb.append("║                     EXAME                        ║\n");
+        sb.append("╠════════════════════════════════════════════════╣\n");
+        sb.append(informacoesBase()).append("\n");
+        sb.append(String.format("  Tipo de exame: %s\n", tipoExame));
+        sb.append("╚════════════════════════════════════════════════╝\n");
+        return sb.toString();
     }
 }

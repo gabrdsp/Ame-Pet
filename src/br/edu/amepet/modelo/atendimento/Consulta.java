@@ -17,6 +17,13 @@ public class Consulta extends Atendimento {
 
     @Override
     public String exibirInformacoes() {
-        return "=== Consulta ===\n" + informacoesBase() + "Veterinário: " + veterinario + "\n";
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n╔════════════════════════════════════════════════╗\n");
+        sb.append("║                    CONSULTA                      ║\n");
+        sb.append("╠════════════════════════════════════════════════╣\n");
+        sb.append(informacoesBase()).append("\n");
+        sb.append(String.format("  Veterinário: %s\n", veterinario));
+        sb.append("╚════════════════════════════════════════════════╝\n");
+        return sb.toString();
     }
 }

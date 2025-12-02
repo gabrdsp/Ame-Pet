@@ -18,7 +18,14 @@ public class Tosa extends Atendimento{
 
     @Override
     public String exibirInformacoes(){
-        return "== Tosa ==\n" + informacoesBase() + "Procedimento: " + tipoTosa + "Duração: ";
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n╔════════════════════════════════════════════════╗\n");
+        sb.append("║                      TOSA                        ║\n");
+        sb.append("╠════════════════════════════════════════════════╣\n");
+        sb.append(informacoesBase()).append("\n");
+        sb.append(String.format("  Procedimento: %s\n", tipoTosa));
+        sb.append("╚════════════════════════════════════════════════╝\n");
+        return sb.toString();
     }
 
 }

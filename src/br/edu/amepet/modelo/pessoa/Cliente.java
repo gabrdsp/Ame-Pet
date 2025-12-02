@@ -46,11 +46,17 @@ public class Cliente extends Pessoa {
 
     @Override
     public String exibirDetalhes() {
-        return  "\nCliente: " + getNome() +
-                "\nCPF: " + getCpf() +
-                "\nTelefone: " + getTelefone() +
-                "\nEndereço: " + endereco +
-                "\nServiços contratados: " + totalServicosContratados + "\n";
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n╔════════════════════════════════════════════════╗\n");
+        sb.append("║                   CLIENTE                       ║\n");
+        sb.append("╠════════════════════════════════════════════════╣\n");
+        sb.append(String.format("║ Nome: %-40s║\n", getNome()));
+        sb.append(String.format("║ CPF: %-41s║\n", getCpf()));
+        sb.append(String.format("║ Telefone: %-36s║\n", getTelefone()));
+        sb.append(String.format("║ Endereço: %-36s║\n", endereco));
+        sb.append(String.format("║ Serviços Contratados: %-26d║\n", totalServicosContratados));
+        sb.append("╚════════════════════════════════════════════════╝\n");
+        return sb.toString();
     }
 
     @Override

@@ -58,18 +58,23 @@ public class MenuCliente {
             switch (opcao){
                 case 1:
                     System.out.println("---- Cadastro do Cliente ----");
+                    System.out.println("( * ) Cancelar");
 
                     System.out.print("Nome: ");
-                    String nome = sc.nextLine();
+                    String nome = CancelarAcao.readLine(sc);
+                    if (CancelarAcao.isCancelado(nome)) { System.out.println("Cadastro cancelado."); break; }
 
                     System.out.print("CPF: ");
-                    String cpf = sc.nextLine();
+                    String cpf = CancelarAcao.readLine(sc);
+                    if (CancelarAcao.isCancelado(cpf)) { System.out.println("Cadastro cancelado."); break; }
 
                     System.out.print("Telefone: ");
-                    String telefone = sc.nextLine();
+                    String telefone = CancelarAcao.readLine(sc);
+                    if (CancelarAcao.isCancelado(telefone)) { System.out.println("Cadastro cancelado."); break; }
 
                     System.out.print("Endereço: ");
-                    String endereco = sc.nextLine();
+                    String endereco = CancelarAcao.readLine(sc);
+                    if (CancelarAcao.isCancelado(endereco)) { System.out.println("Cadastro cancelado."); break; }
 
                     Cliente c = new Cliente(nome, cpf, telefone, endereco);
                     sistema.adicionarCliente(c);
@@ -81,9 +86,11 @@ public class MenuCliente {
                     sistema.listarClientes();
                     break;
                 case 3:
-                    System.out.println("---- Remover Cliente ----");
-                    System.out.println("CPF do cliente: ");
-                    String cpfRemover = sc.nextLine();
+                    System.out.println("---- Remover Cliente ---");
+                    System.out.println("( * ) Cancelar");
+                    System.out.print("CPF do cliente: ");
+                    String cpfRemover = CancelarAcao.readLine(sc);
+                    if (CancelarAcao.isCancelado(cpfRemover)) { System.out.println("Operação cancelada."); break; }
 
                     sistema.removerCliente(cpfRemover);
                     break;
@@ -118,39 +125,39 @@ public class MenuCliente {
             switch (opcao) {
                 case 1:
                     System.out.println("\n---- Cadastro do Pet ----");
+                    System.out.println("( * ) Cancelar");
 
                     System.out.print("Nome do Pet: ");
-                    String nomePet = sc.nextLine();
+                    String nomePet = CancelarAcao.readLine(sc);
+                    if (CancelarAcao.isCancelado(nomePet)) { System.out.println("Cadastro cancelado."); break; }
 
                     System.out.print("Espécie: ");
-                    String especie = sc.nextLine();
+                    String especie = CancelarAcao.readLine(sc);
+                    if (CancelarAcao.isCancelado(especie)) { System.out.println("Cadastro cancelado."); break; }
 
                     System.out.print("Raça: ");
-                    String raca = sc.nextLine();
+                    String raca = CancelarAcao.readLine(sc);
+                    if (CancelarAcao.isCancelado(raca)) { System.out.println("Cadastro cancelado."); break; }
 
                     System.out.print("Idade (anos): ");
-                    int idade = Integer.parseInt(sc.nextLine());
+                    String idadeStr = CancelarAcao.readInt(sc);
+                    if (CancelarAcao.isCancelado(idadeStr)) { System.out.println("Cadastro cancelado."); break; }
+                    int idade = Integer.parseInt(idadeStr);
 
                     System.out.print("Peso (kg): ");
-                    double peso = Double.parseDouble(sc.nextLine());
+                    String pesoStr = CancelarAcao.readDouble(sc);
+                    if (CancelarAcao.isCancelado(pesoStr)) { System.out.println("Cadastro cancelado."); break; }
+                    double peso = Double.parseDouble(pesoStr);
 
                     String cpfDono;
-                    boolean cancelCadastro = false;
                     while (true) {
-                        System.out.print("CPF do Dono (ou '!sair' para voltar): ");
-                        cpfDono = sc.nextLine();
-                        if (cpfDono.equalsIgnoreCase("!sair")) {
-                            cancelCadastro = true;
-                            break;
-                        }
+                        System.out.print("CPF do Dono: ");
+                        cpfDono = CancelarAcao.readLine(sc);
+                        if (CancelarAcao.isCancelado(cpfDono)) { System.out.println("Cadastro cancelado."); break; }
                         if (sistema.buscarClientePorCpf(cpfDono) != null) break;
-                        System.out.println("Cliente não encontrado. Digite um CPF cadastrado ou '!sair' para voltar.");
+                        System.out.println("Cliente não encontrado. Digite um CPF cadastrado ou * para cancelar.");
                     }
-
-                    if (cancelCadastro) {
-                        System.out.println("Cadastro de pet cancelado. Voltando ao menu de pets...\n");
-                        break;
-                    }
+                    if (CancelarAcao.isCancelado(cpfDono)) break;
 
                     Pet pet = new Pet(nomePet, especie, raca, idade, peso, cpfDono);
                     sistema.adicionarPet(cpfDono, pet);
@@ -163,12 +170,15 @@ public class MenuCliente {
                     sistema.listarPets();
                     break;
                 case 3:
-                    System.out.println("---- Remover Pet ----");
+                    System.out.println("---- Remover Pet ---");
+                    System.out.println("( * ) Cancelar");
                     System.out.print("CPF do dono do pet: ");
-                    String cpf = sc.nextLine();
+                    String cpf = CancelarAcao.readLine(sc);
+                    if (CancelarAcao.isCancelado(cpf)) { System.out.println("Operação cancelada."); break; }
 
                     System.out.print("Nome do pet a remover: ");
-                    String nomePetR = sc.nextLine();
+                    String nomePetR = CancelarAcao.readLine(sc);
+                    if (CancelarAcao.isCancelado(nomePetR)) { System.out.println("Operação cancelada."); break; }
 
                     sistema.removerPet(cpf, nomePetR);
                     break;

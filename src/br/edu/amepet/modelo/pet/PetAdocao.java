@@ -18,6 +18,13 @@ public class PetAdocao {
     }
 
     public String detalhes() {
-        return "| Nome: " + nome + "| Espécie: " + especie + "| Raça: " + raca + "| Idade: " + idade + " anos";
+        return "\n╔════════════════════════════════════════════════╗\n" +
+                "║              PET PARA ADOÇÃO                 ║\n" +
+                "╠════════════════════════════════════════════════╣\n" +
+                String.format("║ Nome: %-40s║\n", nome) +
+                String.format("║ Espécie: %-37s║\n", especie) +
+                String.format("║ Raça: %-39s║\n", raca) +
+                String.format("║ Idade: %-38d║\n", idade) +
+                "╚════════════════════════════════════════════════╝\n";
     }
 }

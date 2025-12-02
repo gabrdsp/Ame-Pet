@@ -35,31 +35,35 @@ public class MenuHistorico {
     }
 
     private static void exibirHistoricoServicos(GerenciadorPetShop sistema, Scanner sc) {
+        System.out.println("\n╔════════════════════════════════════════════════╗");
+        System.out.println("║          HISTÓRICO DE SERVIÇOS               ║");
+        System.out.println("╠════════════════════════════════════════════════╣");
+        System.out.println("( * ) Cancelar");
 
-        System.out.println("---- Histórico de Serviços ----");
+        System.out.print("CPF do dono: ");
+        String cpf = CancelarAcao.readLine(sc);
+        if (CancelarAcao.isCancelado(cpf)) { System.out.println("Operação cancelada."); return; }
 
-        System.out.print("CPF do dono (ou '!sair' para voltar): ");
-        String cpf = CancelarAcao.readLineAllowExit(sc);
-        if (cpf == null) { System.out.println("Operação cancelada."); return; }
+        System.out.print("Nome do pet: ");
+        String nomePet = CancelarAcao.readLine(sc);
+        if (CancelarAcao.isCancelado(nomePet)) { System.out.println("Operação cancelada."); return; }
+        System.out.println("╚════════════════════════════════════════════════╝");
 
-        System.out.print("Nome do pet (ou '!sair' para voltar): ");
-        String nomePet = CancelarAcao.readLineAllowExit(sc);
-        if (nomePet == null) { System.out.println("Operação cancelada."); return; }
-
-        sistema.mostrarHistoricoServicos(cpf, nomePet); // método esperado no sistema
+        sistema.mostrarHistoricoServicos(cpf, nomePet);
     }
 
     private static void exibirHistoricoMedico(GerenciadorPetShop sistema, Scanner sc) {
 
         System.out.println("---- Histórico Médico ----");
+        System.out.println("( * ) Cancelar");
 
-        System.out.print("CPF do dono (ou '!sair' para voltar): ");
-        String cpf = CancelarAcao.readLineAllowExit(sc);
-        if (cpf == null) { System.out.println("Operação cancelada."); return; }
+        System.out.print("CPF do dono: ");
+        String cpf = CancelarAcao.readLine(sc);
+        if (CancelarAcao.isCancelado(cpf)) { System.out.println("Operação cancelada."); return; }
 
-        System.out.print("Nome do pet (ou '!sair' para voltar): ");
-        String nomePet = CancelarAcao.readLineAllowExit(sc);
-        if (nomePet == null) { System.out.println("Operação cancelada."); return; }
+        System.out.print("Nome do pet: ");
+        String nomePet = CancelarAcao.readLine(sc);
+        if (CancelarAcao.isCancelado(nomePet)) { System.out.println("Operação cancelada."); return; }
 
         sistema.mostrarHistoricoServicos(cpf, nomePet); // método esperado no sistema
     }

@@ -87,34 +87,56 @@ public class GerenciadorPetShop {
 
     public void listarFuncionarios() {
         System.out.println("\n>>> FUNCIONÁRIOS <<<");
+        boolean temFuncionarios = false;
         for (Pessoa p : pessoas)
-            if (p instanceof Funcionario f)
+            if (p instanceof Funcionario f) {
                 System.out.println(f.exibirDetalhes());
+                temFuncionarios = true;
+            }
+        if (!temFuncionarios)
+            System.out.println("Não há nenhum registro.");
     }
 
     public void listarClientes() {
         System.out.println("\n>>> CLIENTES <<<");
+        boolean temClientes = false;
         for (Pessoa p : pessoas)
-            if (p instanceof Cliente c)
+            if (p instanceof Cliente c) {
                 System.out.println(c.exibirDetalhes());
+                temClientes = true;
+            }
+        if (!temClientes)
+            System.out.println("Não há nenhum registro.");
     }
 
     public void listarPets() {
         System.out.println("\n>>> PETS <<<");
-        for (Pet p : pets)
-            System.out.println(p.exibirInformacoes());
+        if (pets.isEmpty()) {
+            System.out.println("Não há nenhum registro.");
+        } else {
+            for (Pet p : pets)
+                System.out.println(p.exibirInformacoes());
+        }
     }
 
     public void listarProdutos() {
         System.out.println("\n>>> PRODUTOS <<<");
-        for (Produto p : produtos)
-            System.out.println(p.exibirInformacoes());
+        if (produtos.isEmpty()) {
+            System.out.println("Não há nenhum registro.");
+        } else {
+            for (Produto p : produtos)
+                System.out.println(p.exibirInformacoes());
+        }
     }
 
     public void listarAtendimentos() {
         System.out.println("\n>>> ATENDIMENTOS <<<");
-        for (Atendimento a : atendimentos)
-            System.out.println(a.exibirInformacoes());
+        if (atendimentos.isEmpty()) {
+            System.out.println("Não há nenhum registro.");
+        } else {
+            for (Atendimento a : atendimentos)
+                System.out.println(a.exibirInformacoes());
+        }
     }
 
     // ============================================================
@@ -159,11 +181,16 @@ public class GerenciadorPetShop {
     }
 
     public void buscarServicos(String cpf, String nomePet) {
+        boolean encontrou = false;
         for (Atendimento a : atendimentos) {
             if (a.getCliente().getCpf().equals(cpf)
                     && a.getPet().getNome().equalsIgnoreCase(nomePet)) {
                 System.out.println(a.exibirInformacoes());
+                encontrou = true;
             }
+        }
+        if (!encontrou) {
+            System.out.println("Não há nenhum registro.");
         }
     }
 
@@ -440,7 +467,7 @@ public class GerenciadorPetShop {
     public void relatorioVendas() {
         System.out.println("\n>>> VENDAS <<<");
         if (vendas.isEmpty()) {
-            System.out.println("Nenhuma venda registrada.");
+            System.out.println("Não há nenhum registro.");
             return;
         }
 
@@ -504,7 +531,15 @@ public class GerenciadorPetShop {
     }
 
     public void emitirRecibo() {
-        System.out.println("---- Recibo emitido ----");
+        System.out.println("\n╔════════════════════════════════════════════════╗");
+        System.out.println("║                     RECIBO                     ║");
+        System.out.println("╠════════════════════════════════════════════════╣");
+        System.out.println("║                                                ║");
+        System.out.println("║              Obrigado pela compra!             ║");
+        System.out.println("║                                                ║");
+        System.out.println("║                                                ║");
+        System.out.println("║                  Volte Sempre!                 ║");
+        System.out.println("╚════════════════════════════════════════════════╝\n");
     }
 
     // ============================================================
@@ -528,7 +563,7 @@ public class GerenciadorPetShop {
 
     public void listarpetsvenda(){
         if (petsVenda.isEmpty()) {
-            System.out.println("Nenhum pet disponível para venda no momento.");
+            System.out.println("Não há nenhum registro.");
             return;
         }
 
@@ -586,7 +621,7 @@ public class GerenciadorPetShop {
 
     public void listarPetsadocao(){
         if (petsAdoção.isEmpty()) {
-            System.out.println("Nenhum pet disponível para adoção no momento.");
+            System.out.println("Não há nenhum registro.");
             return;
         }
 

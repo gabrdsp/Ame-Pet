@@ -85,6 +85,15 @@ public class Pet {
     }
 
     public String exibirInformacoes() {
-        return String.format("Pet: %S | Espécie: %S | Raça: %S | Idade: %d anos | Peso: %.2f kg" , nome, especie, raca, idade, peso);
+        return "\n╔════════════════════════════════════════════════╗\n" +
+                "║                    PET                        ║\n" +
+                "╠════════════════════════════════════════════════╣\n" +
+                String.format("║ Nome: %-40s║\n", nome) +
+                String.format("║ Espécie: %-37s║\n", especie) +
+                String.format("║ Raça: %-39s║\n", raca) +
+                String.format("║ Idade: %-38d║\n", idade) +
+                String.format("║ Peso: %-38.2f kg║\n", peso) +
+                String.format("║ CPF Dono: %-35s║\n", cpfDono) +
+                "╚════════════════════════════════════════════════╝\n";
     }
 }

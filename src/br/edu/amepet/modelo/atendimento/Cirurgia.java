@@ -23,6 +23,14 @@ public class Cirurgia extends Atendimento {
 
     @Override
     public String exibirInformacoes() {
-        return "=== Cirurgia ===\n" + informacoesBase() + "Procedimento: " + procedimento + "\n" + "Duração: " + duracaoHoras + "\n";
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n╔════════════════════════════════════════════════╗\n");
+        sb.append("║                    CIRURGIA                      ║\n");
+        sb.append("╠════════════════════════════════════════════════╣\n");
+        sb.append(informacoesBase()).append("\n");
+        sb.append(String.format("  Procedimento: %s\n", procedimento));
+        sb.append(String.format("  Duração: %d horas\n", duracaoHoras));
+        sb.append("╚════════════════════════════════════════════════╝\n");
+        return sb.toString();
     }
 }
