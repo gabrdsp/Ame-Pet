@@ -1,11 +1,13 @@
 package br.edu.amepet.modelo.pet;
 
+// Representa um pet disponível para adoção
 public class PetAdocao {
     private String nome;
     private String especie;
     private String raca;
     private int idade;
 
+    // Construtor: cria um pet para adoção com dados básicos
     public PetAdocao(String nome, String especie, String raca, int idade) {
         this.nome = nome;
         this.especie = especie;
@@ -17,14 +19,17 @@ public class PetAdocao {
         return nome;
     }
 
+    // Retorna uma representação formatada dos dados do pet para adoção
     public String detalhes() {
-        return "\n╔════════════════════════════════════════════════╗\n" +
-                "║              PET PARA ADOÇÃO                 ║\n" +
-                "╠════════════════════════════════════════════════╣\n" +
-                String.format("║ Nome: %-40s║\n", nome) +
-                String.format("║ Espécie: %-37s║\n", especie) +
-                String.format("║ Raça: %-39s║\n", raca) +
-                String.format("║ Idade: %-38d║\n", idade) +
-                "╚════════════════════════════════════════════════╝\n";
+                StringBuilder sb = new StringBuilder();
+                sb.append("\n╔══════════════════════════════════════════════════════╗\n");
+                sb.append("║                  PET PARA ADOÇÃO                      ║\n");
+                sb.append("╠══════════════════════════════════════════════════════ ╣\n");
+                sb.append(String.format("║ Nome: %s\n", nome));
+                sb.append(String.format("║ Espécie: %s\n", especie));
+                sb.append(String.format("║ Raça: %s\n", raca));
+                sb.append(String.format("║ Idade: %d\n", idade));
+                sb.append("╚══════════════════════════════════════════════════════╝\n");
+                return sb.toString();
     }
 }

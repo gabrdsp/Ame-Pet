@@ -2,16 +2,15 @@ package br.edu.amepet.menu;
 
 import br.edu.amepet.gerenciador.GerenciadorPetShop;
 import br.edu.amepet.modelo.pessoa.Funcionario;
-
 import java.util.Scanner;
 
 public class MenuLogin {
     public static Funcionario exibirLogin(GerenciadorPetShop sistema, Scanner sc) {
         System.out.println("\n---- LOGIN de FUNCIONÁRIO ----");
-        System.out.print("Usuário: ");
-        String usuario = sc.next();
-        System.out.print("Senha: ");
-        String senha = sc.next();
+        String usuario = CancelarAcao.readLineSafe(sc, "Usuário");
+        if (CancelarAcao.isCancelado(usuario)) { System.out.println("Login cancelado.\n"); return null; }
+        String senha = CancelarAcao.readLineSafe(sc, "Senha");
+        if (CancelarAcao.isCancelado(senha)) { System.out.println("Login cancelado.\n"); return null; }
 
         Funcionario funcionarioLogado = sistema.loginFuncionario(usuario, senha);
 

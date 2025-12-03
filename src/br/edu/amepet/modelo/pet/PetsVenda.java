@@ -1,6 +1,6 @@
 package br.edu.amepet.modelo.pet;
 
-
+// Representa um pet disponível para compra
 public class PetsVenda {
     private String nome;
     private String especie;
@@ -8,6 +8,7 @@ public class PetsVenda {
     private int idade;
     private double preco;
 
+    // Construtor: cria um pet para venda com dados básicos e preço
     public PetsVenda(String nome, String especie, String raca, int idade, double preco) {
         this.nome = nome;
         this.especie = especie;
@@ -24,15 +25,16 @@ public class PetsVenda {
         return preco;
     }
 
+    // Retorna uma representação formatada dos dados do pet para venda
     public String detalhes() {
         return "\n╔════════════════════════════════════════════════╗\n" +
-                "║              PET PARA COMPRA                  ║\n" +
+                "║              PET PARA COMPRA                   ║\n" +
                 "╠════════════════════════════════════════════════╣\n" +
-                String.format("║ Nome: %-40s║\n", nome) +
-                String.format("║ Espécie: %-37s║\n", especie) +
-                String.format("║ Raça: %-39s║\n", raca) +
-                String.format("║ Idade: %-38d║\n", idade) +
-                String.format("║ Preço: R$%-33.2f║\n", preco) +
+                  String.format("║ Nome: %-40s║\n", nome) +
+                  String.format("║ Espécie: %-37s║\n", especie) +
+                  String.format("║ Raça: %-39s║\n", raca) +
+                  String.format("║ Idade: %-38d║\n", idade) +
+                  String.format("║ Preço: R$%-33.2f║\n", preco) +
                 "╚════════════════════════════════════════════════╝\n";
     }
 }

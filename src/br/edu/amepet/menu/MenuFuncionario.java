@@ -20,45 +20,36 @@ public class MenuFuncionario {
             System.out.println("╚════════════════════════════════════════════════╝");
             System.out.print("Escolha uma opção: ");
 
-            opcao = sc.nextInt();
-            sc.nextLine();
+            Integer opcObj = CancelarAcao.readIntSafe(sc);
+            opcao = (opcObj == null) ? 0 : opcObj;
 
             switch (opcao) {
                 case 1:
                     System.out.println("\n---- Cadastro de Funcionário ----");
                     System.out.println("( * ) Cancelar");
 
-                    System.out.print("Nome: ");
-                    String nome = CancelarAcao.readLine(sc);
+                    String nome = CancelarAcao.readStringSafe(sc, "Nome");
                     if (CancelarAcao.isCancelado(nome)) { System.out.println("Cadastro cancelado."); break; }
 
-                    System.out.print("CPF: ");
-                    String cpf = CancelarAcao.readLine(sc);
+                    String cpf = CancelarAcao.readDigitsSafe(sc, "CPF");
                     if (CancelarAcao.isCancelado(cpf)) { System.out.println("Cadastro cancelado."); break; }
 
-                    System.out.print("Telefone: ");
-                    String telefone = CancelarAcao.readLine(sc);
+                    String telefone = CancelarAcao.readDigitsSafe(sc, "Telefone");
                     if (CancelarAcao.isCancelado(telefone)) { System.out.println("Cadastro cancelado."); break; }
 
-                    System.out.print("Cargo: ");
-                    String cargo = CancelarAcao.readLine(sc);
+                    String cargo = CancelarAcao.readStringSafe(sc, "Cargo");
                     if (CancelarAcao.isCancelado(cargo)) { System.out.println("Cadastro cancelado."); break; }
 
-                    System.out.print("Salário: ");
-                    String salarioStr = CancelarAcao.readDouble(sc);
-                    if (CancelarAcao.isCancelado(salarioStr)) { System.out.println("Cadastro cancelado."); break; }
-                    double salario = Double.parseDouble(salarioStr);
+                    Double salario = CancelarAcao.readDoubleSafe(sc, "Salário");
+                    if (salario == null) { System.out.println("Cadastro cancelado."); break; }
 
-                    System.out.print("Data de Admissão: ");
                     String dataAdmissao = CancelarAcao.readLine(sc);
                     if (CancelarAcao.isCancelado(dataAdmissao)) { System.out.println("Cadastro cancelado."); break; }
 
-                    System.out.print("Usuário: ");
-                    String usuario = CancelarAcao.readLine(sc);
+                    String usuario = CancelarAcao.readLineSafe(sc, "Usuário");
                     if (CancelarAcao.isCancelado(usuario)) { System.out.println("Cadastro cancelado."); break; }
 
-                    System.out.print("Senha: ");
-                    String senha = CancelarAcao.readLine(sc);
+                    String senha = CancelarAcao.readLineSafe(sc, "Senha");
                     if (CancelarAcao.isCancelado(senha)) { System.out.println("Cadastro cancelado."); break; }
 
                     Funcionario f = new Funcionario(nome, cpf, telefone, cargo, salario, dataAdmissao, usuario, senha);
@@ -73,8 +64,7 @@ public class MenuFuncionario {
                 case 3:
                     System.out.println("\n---- Remover Funcionário ----");
                     System.out.println("( * ) Cancelar");
-                    System.out.print("CPF do funcionário: ");
-                    String cpfRemover = CancelarAcao.readLine(sc);
+                    String cpfRemover = CancelarAcao.readDigitsSafe(sc, "CPF do funcionário");
                     if (CancelarAcao.isCancelado(cpfRemover)) { System.out.println("Operação cancelada."); break; }
 
                     sistema.removerFuncionario(cpfRemover);

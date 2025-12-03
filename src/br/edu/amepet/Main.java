@@ -1,9 +1,8 @@
 package br.edu.amepet;
 
 import br.edu.amepet.gerenciador.GerenciadorPetShop;
-import br.edu.amepet.modelo.pessoa.Funcionario;
 import br.edu.amepet.menu.*;
-
+import br.edu.amepet.modelo.pessoa.Funcionario;
 import java.util.Scanner;
 
 public class Main {
@@ -28,8 +27,8 @@ public class Main {
             System.out.println("╚════════════════════════════════════════════════╝");
             System.out.print("Escolha uma opção: ");
 
-            opcao = scanner.nextInt();
-            scanner.nextLine();
+            Integer opcObj = CancelarAcao.readIntSafe(scanner);
+            opcao = (opcObj == null) ? 0 : opcObj;
 
             switch (opcao) {
 

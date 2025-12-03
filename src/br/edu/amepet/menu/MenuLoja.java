@@ -20,7 +20,8 @@ public class MenuLoja {
             System.out.println("╚════════════════════════════════════════════════╝");
             System.out.print("Escolha uma opção: ");
 
-            opcao = sc.nextInt();
+            Integer opcObj = CancelarAcao.readIntSafe(sc);
+            opcao = (opcObj == null) ? 0 : opcObj;
 
             switch (opcao) {
                 case 1 -> menuEstoque(sistema, sc);
@@ -51,8 +52,8 @@ public class MenuLoja {
             System.out.println("╚════════════════════════════════════════════════╝");
             System.out.print("Escolha uma opção: ");
 
-            opcao = sc.nextInt();
-            sc.nextLine();
+            Integer opcObj2 = CancelarAcao.readIntSafe(sc);
+            opcao = (opcObj2 == null) ? 0 : opcObj2;
 
             switch (opcao) {
 
@@ -62,27 +63,20 @@ public class MenuLoja {
                     System.out.println("---- Cadastro de Produto ----");
                     System.out.println("( * ) Cancelar");
 
-                    System.out.print("Código do Produto: ");
                     String codigo = CancelarAcao.readLine(sc);
                     if (CancelarAcao.isCancelado(codigo)) { System.out.println("Cadastro cancelado."); break; }
 
-                    System.out.print("Nome do Produto: ");
-                    String nome = CancelarAcao.readLine(sc);
+                    String nome = CancelarAcao.readStringSafe(sc, "Nome do Produto");
                     if (CancelarAcao.isCancelado(nome)) { System.out.println("Cadastro cancelado."); break; }
 
-                    System.out.print("Categoria: ");
-                    String categoria = CancelarAcao.readLine(sc);
+                    String categoria = CancelarAcao.readStringSafe(sc, "Categoria");
                     if (CancelarAcao.isCancelado(categoria)) { System.out.println("Cadastro cancelado."); break; }
 
-                    System.out.print("Preço: ");
-                    String precoStr = CancelarAcao.readDouble(sc);
-                    if (CancelarAcao.isCancelado(precoStr)) { System.out.println("Cadastro cancelado."); break; }
-                    double preco = Double.parseDouble(precoStr);
+                    Double preco = CancelarAcao.readDoubleSafe(sc, "Preço");
+                    if (preco == null) { System.out.println("Cadastro cancelado."); break; }
 
-                    System.out.print("Quantidade: ");
-                    String qtdStr = CancelarAcao.readInt(sc);
-                    if (CancelarAcao.isCancelado(qtdStr)) { System.out.println("Cadastro cancelado."); break; }
-                    int quantidadeEstoque = Integer.parseInt(qtdStr);
+                    Integer quantidadeEstoque = CancelarAcao.readIntSafe(sc, "Quantidade");
+                    if (quantidadeEstoque == null) { System.out.println("Cadastro cancelado."); break; }
 
                     Produto p = new Produto(codigo, nome, categoria, preco, quantidadeEstoque);
 
@@ -92,19 +86,17 @@ public class MenuLoja {
                 }
 
                 case 3 -> {
-                    System.out.print("Nome do produto: ");
-                    String nome = sc.nextLine();
+                    String nome = CancelarAcao.readStringSafe(sc, "Nome do produto");
 
-                    System.out.print("Novo preço: ");
-                    double preco = sc.nextDouble();
+                    Double preco = CancelarAcao.readDoubleSafe(sc, "Novo preço");
+                    if (preco == null) { System.out.println("Operação cancelada."); break; }
 
                     sistema.atualizarPrecoProduto(nome, preco);
                     break;
                 }
 
                 case 4 -> {
-                    System.out.print("Nome do produto: ");
-                    String nome = sc.nextLine();
+                    String nome = CancelarAcao.readStringSafe(sc, "Nome do produto");
 
                     sistema.removerProduto(nome);
                     break;
@@ -136,8 +128,8 @@ public class MenuLoja {
             System.out.println("╚════════════════════════════════════════════════╝");
             System.out.print("Escolha uma opção: ");
 
-            opcao = sc.nextInt();
-            sc.nextLine();
+            Integer opcObj3 = CancelarAcao.readIntSafe(sc);
+            opcao = (opcObj3 == null) ? 0 : opcObj3;
 
             switch (opcao) {
 
@@ -147,14 +139,11 @@ public class MenuLoja {
                     System.out.println("---- Registrar Venda ----");
                     System.out.println("( * ) Cancelar");
 
-                    System.out.print("Nome do produto: ");
-                    String nomeProduto = CancelarAcao.readLine(sc);
+                    String nomeProduto = CancelarAcao.readStringSafe(sc, "Nome do produto");
                     if (CancelarAcao.isCancelado(nomeProduto)) { System.out.println("Operação cancelada."); break; }
 
-                    System.out.print("Quantidade vendida: ");
-                    String qtdStr = CancelarAcao.readInt(sc);
-                    if (CancelarAcao.isCancelado(qtdStr)) { System.out.println("Operação cancelada."); break; }
-                    int qtd = Integer.parseInt(qtdStr);
+                    Integer qtd = CancelarAcao.readIntSafe(sc, "Quantidade vendida");
+                    if (qtd == null) { System.out.println("Operação cancelada."); break; }
 
                     sistema.registrarVenda(nomeProduto, qtd);
                     break;
@@ -164,14 +153,11 @@ public class MenuLoja {
                     System.out.println("---- Atualizar Estoque ----");
                     System.out.println("( * ) Cancelar");
 
-                    System.out.print("Nome do produto: ");
-                    String nomeProduto = CancelarAcao.readLine(sc);
+                    String nomeProduto = CancelarAcao.readStringSafe(sc, "Nome do produto");
                     if (CancelarAcao.isCancelado(nomeProduto)) { System.out.println("Operação cancelada."); break; }
 
-                    System.out.print("Quantidade adicionada: ");
-                    String qtdStr = CancelarAcao.readInt(sc);
-                    if (CancelarAcao.isCancelado(qtdStr)) { System.out.println("Operação cancelada."); break; }
-                    int qtd2 = Integer.parseInt(qtdStr);
+                    Integer qtd2 = CancelarAcao.readIntSafe(sc, "Quantidade adicionada");
+                    if (qtd2 == null) { System.out.println("Operação cancelada."); break; }
 
                     sistema.atualizarEstoque(nomeProduto, qtd2);
                     break;

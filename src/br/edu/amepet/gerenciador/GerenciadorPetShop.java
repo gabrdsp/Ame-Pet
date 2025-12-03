@@ -546,12 +546,13 @@ public class GerenciadorPetShop {
     //                      COMPRA E ADOÇÕES
     // ============================================================
     
-    
+    // Adiciona um pet na lista de pets disponíveis para compra
     public void cadastrarPetVenda(PetsVenda pv) {
         petsVenda.add(pv);
         System.out.println("Pet para compra cadastrado com sucesso!");
     }
 
+    // Busca um pet para venda pelo nome
     public PetsVenda obterPetVendaPorNome(String nome) {
         for (PetsVenda pv : petsVenda) {
             if (pv.getNome().equalsIgnoreCase(nome)) {
@@ -561,6 +562,7 @@ public class GerenciadorPetShop {
         return null;
     }
 
+    // Lista todos os pets disponíveis para compra
     public void listarpetsvenda(){
         if (petsVenda.isEmpty()) {
             System.out.println("Não há nenhum registro.");
@@ -574,6 +576,7 @@ public class GerenciadorPetShop {
         }
     }
 
+    // Realiza compra de pet sem registrar venda (método simplificado)
     public void comprarPet(String nome){
         for (int i = 0; i < petsVenda.size(); i++) {
             PetsVenda pet = petsVenda.get(i);
@@ -586,12 +589,15 @@ public class GerenciadorPetShop {
         }
     }
 
+    // Realiza compra de pet e registra a venda com recibo
     public void comprarPetComVenda(String nome, String cpfComprador, String formaPagamento, double valorFinal) {
         for (int i = 0; i < petsVenda.size(); i++) {
             PetsVenda pet = petsVenda.get(i);
             if (pet.getNome().equalsIgnoreCase(nome)) {
+                // Remove o pet da lista de vendas
                 petsVenda.remove(i);
 
+                // Gera ID único e cria registro de venda
                 String id = String.format("V%06d", proximoIdVenda++);
                 java.time.LocalDateTime now = java.time.LocalDateTime.now();
                 br.edu.amepet.modelo.venda.Venda v = new br.edu.amepet.modelo.venda.Venda(
@@ -614,11 +620,13 @@ public class GerenciadorPetShop {
         System.out.println("Pet não encontrado para compra.");
     }
 
+    // Adiciona um pet na lista de pets disponíveis para adoção
     public void cadastrarPetParaAdoção(PetAdocao pa) {
         petsAdoção.add(pa);
         System.out.println("Pet para adoção cadastrado com sucesso!");
 }
 
+    // Lista todos os pets disponíveis para adoção
     public void listarPetsadocao(){
         if (petsAdoção.isEmpty()) {
             System.out.println("Não há nenhum registro.");
@@ -632,16 +640,25 @@ public class GerenciadorPetShop {
         }
     }
 
-    public void adotarPet(String nome){
+    // Realiza adoção de um pet (remove da lista de adoção)
+    public void adotarPet(String nomePet, String nomeAdotante, String cpf, String telefone, String endereco, double renda, String temOutrosPets, String motivoAdocao){
         for (int i = 0; i < petsAdoção.size(); i++) {
-        PetAdocao pet = petsAdoção.get(i);
-        if (pet.getNome().equalsIgnoreCase(nome)) {
-            petsAdoção.remove(i);
-            System.out.println("Você adotou o pet com sucesso!");
-            System.out.println(pet.detalhes());
-            return;
+            PetAdocao pet = petsAdoção.get(i);
+            if (pet.getNome().equalsIgnoreCase(nomePet)) {
+                petsAdoção.remove(i);
+                System.out.println("\n╔════════════════════════════════════════════════╗");
+                System.out.println("║           ADOÇÃO REALIZADA COM SUCESSO!        ║");
+                System.out.println("╠════════════════════════════════════════════════╣");
+                System.out.println("║ Pet: " + nomePet);
+                System.out.println("║ Adotante: " + nomeAdotante);
+                System.out.println("║ CPF: " + cpf);
+                System.out.printf("║ Renda: R$%.2f%n", renda);
+                System.out.println("╠════════════════════════════════════════════════╣");
+                System.out.println("║  Obrigado por dar um lar para este pet!       ║");
+                System.out.println("╚════════════════════════════════════════════════╝\n");
+                return;
+            }
         }
+        System.out.println("Pet não encontrado.");
     }
-
-}
 }

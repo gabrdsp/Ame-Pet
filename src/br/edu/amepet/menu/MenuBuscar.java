@@ -22,38 +22,33 @@ public class MenuBuscar {
             System.out.println("╚════════════════════════════════════════════════╝");
             System.out.print("Escolha uma opção: ");
 
-            opcao = sc.nextInt();
-            sc.nextLine();
+            Integer opcObj = CancelarAcao.readIntSafe(sc);
+            opcao = (opcObj == null) ? 0 : opcObj;
 
             switch (opcao) {
 
                 case 1 -> {
-                    System.out.print("CPF do cliente: ");
-                    String cpf = sc.nextLine();
+                    String cpf = CancelarAcao.readDigitsSafe(sc, "CPF do cliente");
                     sistema.buscarClientePorCpf(cpf);
                     break;
                 }
 
                 case 2 -> {
-                    System.out.print("Nome do pet: ");
-                    String nome = sc.nextLine();
+                    String nome = CancelarAcao.readStringSafe(sc, "Nome do pet");
                     sistema.buscarPetPorNome(nome);
                     break;
                 }
 
                 case 3 -> {
-                    System.out.print("Nome do produto: ");
-                    String nome = sc.nextLine();
+                    String nome = CancelarAcao.readStringSafe(sc, "Nome do produto");
                     sistema.buscarProduto(nome);
                     break;
                 }
 
                 case 4 -> {
-                    System.out.print("CPF do dono do pet: ");
-                    String cpf = sc.nextLine();
+                    String cpf = CancelarAcao.readDigitsSafe(sc, "CPF do dono do pet");
 
-                    System.out.print("Nome do pet: ");
-                    String nome = sc.nextLine();
+                    String nome = CancelarAcao.readStringSafe(sc, "Nome do pet");
 
                     sistema.buscarServicos(cpf, nome);
                     break;

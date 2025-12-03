@@ -20,8 +20,8 @@ public class MenuHistorico {
             System.out.println("╚════════════════════════════════════════════════╝");
             System.out.print("Escolha uma opção: ");
 
-            opcao = sc.nextInt();
-            sc.nextLine();
+            Integer opcObj = CancelarAcao.readIntSafe(sc);
+            opcao = (opcObj == null) ? 0 : opcObj;
 
             switch (opcao) {
 
@@ -40,12 +40,10 @@ public class MenuHistorico {
         System.out.println("╠════════════════════════════════════════════════╣");
         System.out.println("( * ) Cancelar");
 
-        System.out.print("CPF do dono: ");
-        String cpf = CancelarAcao.readLine(sc);
+        String cpf = CancelarAcao.readDigitsSafe(sc, "CPF do dono");
         if (CancelarAcao.isCancelado(cpf)) { System.out.println("Operação cancelada."); return; }
 
-        System.out.print("Nome do pet: ");
-        String nomePet = CancelarAcao.readLine(sc);
+        String nomePet = CancelarAcao.readStringSafe(sc, "Nome do pet");
         if (CancelarAcao.isCancelado(nomePet)) { System.out.println("Operação cancelada."); return; }
         System.out.println("╚════════════════════════════════════════════════╝");
 
@@ -57,12 +55,10 @@ public class MenuHistorico {
         System.out.println("---- Histórico Médico ----");
         System.out.println("( * ) Cancelar");
 
-        System.out.print("CPF do dono: ");
-        String cpf = CancelarAcao.readLine(sc);
+        String cpf = CancelarAcao.readDigitsSafe(sc, "CPF do dono");
         if (CancelarAcao.isCancelado(cpf)) { System.out.println("Operação cancelada."); return; }
 
-        System.out.print("Nome do pet: ");
-        String nomePet = CancelarAcao.readLine(sc);
+        String nomePet = CancelarAcao.readStringSafe(sc, "Nome do pet");
         if (CancelarAcao.isCancelado(nomePet)) { System.out.println("Operação cancelada."); return; }
 
         sistema.mostrarHistoricoServicos(cpf, nomePet); // método esperado no sistema
