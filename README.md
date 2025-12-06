@@ -2,14 +2,15 @@
 
 ## Integrantes
 
-Alexsandro Rocha dos Santos - 2024010299
-Antonio Andson de Oliveira Rocha - 2024010349
-Ikaro Ferreira Brito - 2024010233
-Levi Filgueira Chagas - 2022022050
-Lucas Vieres Araujo Farias - 2025022531
-Paulo Gabriel Vieira de Souza Paiva - 2024010420
-Sophia Hellen Pires da Silveira - 2024010321
+- Alexsandro Rocha dos Santos - 2024010299
+- Antonio Andson de Oliveira Rocha - 2024010349
+- Ikaro Ferreira Brito - 2024010233
+- Levi Filgueira Chagas - 2022022050
+- Lucas Vieres Araujo Farias - 2025022531
+- Paulo Gabriel Vieira de Souza Paiva - 2024010420
+- Sophia Hellen Pires da Silveira - 2024010321
 
+&nbsp;
 ## Descrição do Projeto
 
 O projeto é um sistema de gerenciamento de petshops que integra todas as funcionalidades basicas para um estabelecimento veterinário e de cuidados com animais.
@@ -39,6 +40,8 @@ Aba especifica para compra e adoção de pets, com formulários para preenchimen
 ### Relatórios e buscas
 O sistema gera um relatório para diversas ações, que vão de compra de itens, até realização de serviços e compra/adoção de pets.
 Além disso, pode-se realizar diversas consultas para verificar o histórico de clientes, pets, alem de compra e venda de itens.
+
+&nbsp;
 
 ## Tutorial de como baixar e executar o projeto
 
