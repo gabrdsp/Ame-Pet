@@ -1,5 +1,7 @@
 package br.edu.amepet.modelo.produto;
 
+import java.util.Objects;
+
 public class Produto {
 
     private String codigo;
@@ -12,7 +14,13 @@ public class Produto {
     //       CONSTRUTOR
     // ============================
 
-    public Produto(String codigo, String nome, String categoria, double preco, int quantidadeEstoque) {
+    public Produto(
+            final String codigo,
+            final String nome,
+            final String categoria,
+            final double preco,
+            final int quantidadeEstoque
+    ) {
         setCodigo(codigo);
         setNome(nome);
         setCategoria(categoria);
@@ -28,42 +36,33 @@ public class Produto {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
-        if (codigo == null || codigo.trim().isEmpty()) {
-            throw new IllegalArgumentException("O código do produto não pode ser vazio!");
-        }
-        this.codigo = codigo.trim();
+    public void setCodigo(final String codigo) {
+        this.codigo = validarStringNaoVazia(codigo, "código do produto");
     }
 
     public String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
-        if (nome == null || nome.trim().isEmpty()) {
-            throw new IllegalArgumentException("O nome do produto não pode ser vazio!");
-        }
-        this.nome = nome.trim();
+    public void setNome(final String nome) {
+        this.nome = validarStringNaoVazia(nome, "nome do produto");
     }
 
     public String getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
-        if (categoria == null || categoria.trim().isEmpty()) {
-            throw new IllegalArgumentException("A categoria não pode ser vazia!");
-        }
-        this.categoria = categoria.trim();
+    public void setCategoria(final String categoria) {
+        this.categoria = validarStringNaoVazia(categoria, "categoria do produto");
     }
 
     public double getPreco() {
         return preco;
     }
 
-    public void setPreco(double preco) {
+    public void setPreco(final double preco) {
         if (preco < 0) {
-            throw new IllegalArgumentException("O preço deve ser maior ou igual a zero!");
+            throw new IllegalArgumentException("O preço deve ser maior ou igual a zero.");
         }
         this.preco = preco;
     }
@@ -72,9 +71,9 @@ public class Produto {
         return quantidadeEstoque;
     }
 
-    public void setQuantidadeEstoque(int quantidadeEstoque) {
+    public void setQuantidadeEstoque(final int quantidadeEstoque) {
         if (quantidadeEstoque < 0) {
-            throw new IllegalArgumentException("A quantidade em estoque não pode ser negativa!");
+            throw new IllegalArgumentException("A quantidade em estoque não pode ser negativa.");
         }
         this.quantidadeEstoque = quantidadeEstoque;
     }
@@ -83,20 +82,35 @@ public class Produto {
     //       MÉTODOS DE ESTOQUE
     // ============================
 
-    public boolean reduzirEstoque(int quantidade) {
-        if (quantidade <= 0) return false;
+    /**
+     * Reduz o estoque em uma quantidade específica.
+     *
+     * @param quantidade quantidade a ser removida do estoque
+     * @return true se foi possível reduzir, false caso contrário
+     */
+    public boolean reduzirEstoque(final int quantidade) {
+        if (quantidade <= 0) {
+            return false;
+        }
 
-        if (this.quantidadeEstoque >= quantidade) {
-            this.quantidadeEstoque -= quantidade;
+        if (quantidadeEstoque >= quantidade) {
+            quantidadeEstoque -= quantidade;
             return true;
         }
+
         return false;
     }
 
-    public void adicionarEstoque(int quantidade) {
-        if (quantidade > 0) {
-            this.quantidadeEstoque += quantidade;
+    /**
+     * Adiciona uma quantidade ao estoque, se a quantidade for positiva.
+     *
+     * @param quantidade quantidade a ser adicionada ao estoque
+     */
+    public void adicionarEstoque(final int quantidade) {
+        if (quantidade <= 0) {
+            return;
         }
+        quantidadeEstoque += quantidade;
     }
 
     // ============================
@@ -106,7 +120,31 @@ public class Produto {
     public String exibirInformacoes() {
         return String.format(
                 "Código: %s | Nome: %s | Categoria: %s | Preço: R$ %.2f | Estoque: %d",
-                codigo, nome, categoria, preco, quantidadeEstoque
+                codigo,
+                nome,
+                categoria,
+                preco,
+                quantidadeEstoque
         );
+    }
+
+    @Override
+    public String toString() {
+        return exibirInformacoes();
+    }
+
+    // ============================
+    //       MÉTODOS PRIVADOS
+    // ============================
+
+    private String validarStringNaoVazia(final String valor, final String nomeCampo) {
+        Objects.requireNonNull(valor, "O " + nomeCampo + " não pode ser nulo.");
+
+        final String valorTrim = valor.trim();
+        if (valorTrim.isEmpty()) {
+            throw new IllegalArgumentException("O " + nomeCampo + " não pode ser vazio.");
+        }
+
+        return valorTrim;
     }
 }
