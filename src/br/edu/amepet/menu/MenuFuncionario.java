@@ -43,7 +43,7 @@ public class MenuFuncionario {
                     Double salario = CancelarAcao.readDoubleSafe(sc, "Salário");
                     if (salario == null) { System.out.println("Cadastro cancelado."); break; }
 
-                    String dataAdmissao = CancelarAcao.readLine(sc);
+                    String dataAdmissao = CancelarAcao.readLineSafe(sc, "Data de Admissão");
                     if (CancelarAcao.isCancelado(dataAdmissao)) { System.out.println("Cadastro cancelado."); break; }
 
                     String usuario = CancelarAcao.readLineSafe(sc, "Usuário");

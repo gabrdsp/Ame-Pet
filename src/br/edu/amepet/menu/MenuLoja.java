@@ -2,7 +2,6 @@ package br.edu.amepet.menu;
 
 import br.edu.amepet.gerenciador.GerenciadorPetShop;
 import br.edu.amepet.modelo.produto.Produto;
-
 import java.util.Scanner;
 
 public class MenuLoja {
@@ -56,7 +55,7 @@ public class MenuLoja {
         System.out.println("\n╔════════════════════════════════════════════════╗");
         System.out.println("║                 COMPRA / VENDA                 ║");
         System.out.println("╠════════════════════════════════════════════════╣");
-        System.out.println("║ 1. Selecionar Produto                          ║");
+        System.out.println("║ 1. Listar Produtos                             ║");
         System.out.println("║ 2. Registrar Venda                             ║");
         System.out.println("║ 3. Atualizar Estoque                           ║");
         System.out.println("║ 4. Emitir Recibo                               ║");
@@ -105,7 +104,7 @@ public class MenuLoja {
         System.out.println("---- Cadastro de Produto ----");
         System.out.println("( * ) Cancelar");
 
-        String codigo = CancelarAcao.readLine(sc);
+        String codigo = CancelarAcao.readLineSafe(sc, "Código do Produto");
         if (CancelarAcao.isCancelado(codigo)) return;
 
         String nome = CancelarAcao.readStringSafe(sc, "Nome do Produto");
