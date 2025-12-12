@@ -405,4 +405,4 @@ Para dúvidas ou problemas, abra uma issue no repositório do GitHub:
 ---
 
 **Desenvolvido com ❤️ pela equipe Ame-Pet** 🐾
-Espere alguns momentos enquanto o projeto é adicionado ao seu computador, depois procure pela File Main.java e execute ela.
+
